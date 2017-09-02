@@ -1,0 +1,496 @@
+html, body {
+	margin: 0px;
+	height: 100%;
+	font-family: Arial,sans-serif;
+	background-color: #EEEEEE;
+}
+
+/* 
+	left side option panel starts
+*/
+.panel {
+	width: 280px;
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #2E3238;
+}
+
+/* User bar starts */
+.user-bar-wraper {
+	width: 100%;
+	position: relative;
+	display: block;
+}
+
+.user-bar {
+	margin: 18px;
+	height: 100%;
+}
+
+.user-avatar {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	-webkit-border-radius: 2px;
+	cursor: pointer;
+}
+
+.user-nickname {
+	position: relative;
+	display: inline-block;
+	margin: 0px;
+	padding-left: 11px;
+	vertical-align: middle;
+	width: 60%
+}
+
+.user-nickname-display-name {
+	display: block;
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #FFFFFF;
+	font-size: 18px;
+	line-height: 20px;
+	width: 100%;
+}
+
+.user-opt {
+	position: relative;
+	display: inline-block;
+	float: right;
+	top: 5px;
+	width: 30px;
+	height: 30px;
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -434px -398px;
+	background-size: 487px 462px;
+}
+/* User bar ends */
+
+/* Search bar starts */
+.search-bar-wraper {
+	position: relative;
+	width: 100%;
+	min-width: 280px;
+	margin: auto;
+}
+
+.search-bar {
+	margin-left: 18px;
+	margin-right: 18px;
+}
+
+.search-ico {
+	position: absolute;
+	z-index: 101;
+	top: 3px;
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -60px -432px;
+	background-size: 487px 462px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+}
+
+.search {
+	width: 87.5%;
+	height: 32px;
+	line-height: 32px;
+	border: 0;
+	-webkit-border-radius: 2px;
+	background-color: #26292E;
+	padding-left: 30px;
+	color: #FFFFFF;
+	font-size: 12px;
+}
+/* Search bar ends */
+
+/* Option tab starts */
+.tab-wraper {
+	overflow: hidden;
+	position: relative;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #292C33;
+}
+
+.tab-item {
+	width: 49%;
+	float: left;
+	position: relative;
+	display: block;
+	text-align: center;
+	border-left: 1px solid #292C33;
+	border-right: 1px solid #292C33;
+}
+
+.chat-ico {
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -185px -96px;
+	background-size: 487px 462px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 35px;
+	height: 35px;
+}
+
+.more-topic-ico {
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -220px -96px;
+	background-size: 487px 462px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 35px;
+	height: 35px;	
+}
+/* Option tab ends */
+
+/* Topic navigator starts */
+.topic-nav-wraper {
+	top: 154px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+}
+
+.topic-nav {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	padding: 0 !important;
+	left: 0px;
+	margin: 0px;
+	padding: 0;
+	position: relative !important;
+	top: 0;
+}
+
+.topic-nav:hover {
+	overflow-y: auto;
+}
+/* Topic navigator ends */
+
+/* Topic starts */
+.topic-wraper {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid #292C33;
+	cursor: pointer;
+	position: relative;
+	display: block;
+}
+
+.topic-icon {
+	margin: 18px 0px 18px 18px;
+	width: 40px;
+	height: 40px;
+	-webkit-border-radius: 2px;
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.topic {
+	width: 60%;
+	padding-left: 11px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.topic-topic {
+	display: block;
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	color: #FFFFFF;
+	font-size: 18px;
+	line-height: 20px;
+	text-decoration: none;
+	width: 100%;
+}
+
+.topic-latest-reply {
+	display: block;
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	color: #666666;
+	font-size: 15px;
+	vertical-align: middle;
+	line-height: 20px;
+	text-decoration: none;
+	width: 100%;
+}
+
+.topic-new-reply {
+	visibility: visible;
+	width: 10px;
+	height: 10px;
+	-webkit-border-radius: 5px;
+	background-color: red;
+	position: absolute;
+	top: 13px;
+	left: 54px;
+}
+/* Topic ends */
+/* 
+	left side option panel ends
+*/
+
+
+/* 
+	Chat area starts 
+*/
+.chatArea {
+	position: absolute;
+	top: 52px;
+	right: 0px;
+	left: 280px;
+	background-color: #EEEEEE;
+	overflow: auto;
+}
+
+/* Chat topic starts */
+.chat-topic-wraper {
+	height: 52px;
+	position: fixed;
+	top: 0px;
+	left: 280px;
+	right: 0px;
+	padding: 0;
+	border-bottom: 1px solid #D6D6D6;
+	background-color: #EEEEEE;
+	z-index: 99;
+	text-align: center;
+	line-height: 52px;
+}
+
+.chat-topic {
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 80%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-decoration: none;
+	color: #000000;
+	font-weight: 400;
+	outline: 0;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.chat-topic-menu {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	margin-left: 5px;
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -477px -65px;
+	background-size: 487px 462px;
+	cursor: pointer;
+}
+/* Chat topic ends */
+
+/* Article starts */
+.article-wraper {
+	position: relative;
+	margin: 10px;
+}
+
+.article-content {
+	height: 100%;
+	position: relative !important;
+	top: 0;
+	margin: auto !important;
+	background-color: #FFFFFF;
+	padding: 20px;
+	border: 3px solid #EEEEEE;
+	-webkit-border-radius: 13px;
+}
+
+.article-reply-wraper {
+	position: relative;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
+
+.article-reply {
+	position: relative;
+	float: right;
+	max-width: 90%;
+}
+
+.article-reply-content {
+	max-width: 85%;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.article-reply-plain {
+	padding: 10px;
+	display: inline-block;
+	line-height: 18px;
+	word-wrap: break-word;
+	word-break: break-all;
+	min-height: 25px;
+	text-align: left;
+	font-size: 14px;
+	background-color: #B2E281;
+	-webkit-border-radius: 3px;
+}
+
+.article-reply-pointer {
+	width: 0px;
+	height: 0px;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 6px solid #B2E281;
+	margin: 0 5px 0 0;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.article-reply-user-icon {
+	margin-right: 18px;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	-webkit-border-radius: 2px;
+	cursor: pointer;
+}
+
+.spacer-360px {
+	position: relative;
+	display: block;
+	height: 360px;
+}
+
+/* Reply starts */
+.reply-wraper {
+	height: 180px;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	left: 280px;
+	border-top: 1px solid #D6D6D6;
+	z-index: 99;
+	background-color: #EEEEEE;
+}
+
+/* Reply Toolbar starts */
+.reply-toolbar {
+	height: 30px;
+	padding: 5px 17px;
+	position: relative;
+	display: block;
+}
+
+.face {
+	display: inline-block;
+	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -404px -398px;
+	background-size: 487px 462px;
+	outline: 0;
+	cursor: pointer;
+}
+
+.cut {
+	display: inline-block;
+	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -30px -432px;
+	background-size: 487px 462px;
+	outline: 0;
+	cursor: pointer;
+}
+
+.file {
+	display: inline-block;
+	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+	background: url(StaticLayoutReference/icon/sprite_sheet.png);
+	background-position: -120px -432px;
+	background-size: 487px 462px;
+	outline: 0;
+	cursor: pointer;
+}
+/* Reply Toolbar ends */
+
+/* Reply input starts */
+.reply-content {
+	position: relative;
+	display: block;
+	margin: auto;
+	width: 95%;
+	height: 6em;
+	outline: none;
+	border: 0;
+	font-size: 14px;
+	font-family: inherit;
+	white-space: pre-wrap;
+	word-break: normal;
+	background-color: #EEEEEE;
+	resize: none;
+}
+
+.reply-action {
+	text-align: right;
+	margin-top: 5px;
+	position: relative;
+	display: block;
+}
+
+.reply-description {
+	color: #888888;
+	font-size: 12px;
+	margin-left: 10px;
+	margin-right: 7px;
+}
+
+.reply-button {
+	text-decoration: none;
+	background-color: #FFFFFF;
+	color: #222222;
+	margin-right: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	display: inline-block;
+	border: 1px solid #C1C1C1;
+	-webkit-border-radius: 4px;
+	padding: 3px 20px;
+	font-size: 14px;
+	outline: 0;
+}
+/* Reply inputs ends */
+/* Reply ends */
+/* 
+	Chat area ends 
+*/
