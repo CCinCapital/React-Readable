@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class SearchBar extends Component {
 
 	render () {
+		const placeholder = "Search under topic: " + this.props.category
 		return (
 			<div className="search-bar-wraper">
 				<div className="search-bar">
 					<i className="search-ico"></i>
-					<input className="search" type="text" placeholder="Search under topic..."></input>
+					<input className="search" type="text" placeholder={placeholder}></input>
 				</div>
 			</div>
 		)
 	}
 }
 
-export default SearchBar
+function mapStateToProps ({ activeCategory }) {
+	return {
+		category: activeCategory.category,
+	}
+}
+
+export default connect(mapStateToProps)(SearchBar)
