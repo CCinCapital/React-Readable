@@ -8,7 +8,7 @@ import {
 } from '../actions'
 
 
-const initialCategoriesState = {
+const initialCategoriesList = {
 	all: {
 		category: 'all',
 		img: 'all.svg',
@@ -31,9 +31,9 @@ const initialCategoriesState = {
 	},
 }
 
-function categoryList (state = initialCategoriesState) {
+function categoryList (state = initialCategoriesList) {
 	return {
-		...initialCategoriesState,
+		...initialCategoriesList,
 	}
 }
 
@@ -62,6 +62,30 @@ function activeCategory (state = initialCategorySelectorState, action) {
 }
 
 
+const initialSortByList = {
+	default: {
+		name: 'timestamp',
+		img: 'arrange.svg',
+		title: 'sort by : ',
+	},
+	timestamp: {
+		name: 'timestamp',
+		img: 'timestamp.svg',
+		title: 'lastest reply',
+	},
+	vote: {
+		name: 'vote',
+		img: 'vote.svg',
+		title: '# of votes',
+	},
+}
+
+function sortByList (state = initialSortByList) {
+	return {
+		...initialSortByList,
+	}
+}
+
 const initialPostsSortByState = {
 	isModalOpen: false,
 	sortBy: 'timestamp',
@@ -88,5 +112,6 @@ function sortPosts (state = initialPostsSortByState, action) {
 export default combineReducers({
 	categoryList,
 	activeCategory,
+	sortByList,
 	sortPosts,
 }) 

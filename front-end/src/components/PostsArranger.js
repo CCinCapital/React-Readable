@@ -6,44 +6,53 @@ import { sortPosts, displayPostsSorter } from '../actions'
 class PostsArranger extends Component {
 
 	render () {
-		const sortImg = this.props.sortBy.sortBy+'.svg'
+		const activeSortType = this.props.sortBy.sortBy
+		const sortTypeImg = this.props.sortByList[activeSortType].img
 
 		return (
-			<div className="category-changer-arrange" >
+			<div className="posts-arranger" >
 				<img 
-					className="category-changer-arrange-icon" 
+					className="posts-arranger-icon" 
 					alt="" 
-					src={require('../resources/icon/'+sortImg)}
+					src={require('../resources/icon/'+sortTypeImg)}
 					onClick={()=>(this.props.displayPostsSorter(true))}
 				></img>
 				<Modal
-					className='modal'
-					overlayClassName='overlay'
+					className='posts-arranger-modal'
+					overlayClassName='posts-arranger-overlay'
 					isOpen={this.props.sortBy.isModalOpen}
 					onRequestClose={() => (this.props.displayPostsSorter(false))}
-					contentLabel='Modal'
+					contentLabel='posts-arranger-Modal'
 				>
-					<img 
-						className="category-changer-arrange-icon" 
-						alt="" 
-						src={require('../resources/icon/timestamp.svg')}
-						onClick={()=>(this.props.sortPosts('timestamp'))}
-					></img>
-					<img 
-						className="category-changer-arrange-icon" 
-						alt="" 
-						src={require('../resources/icon/vote.svg')}
-						onClick={()=>(this.props.sortPosts('vote'))}
-					></img>
+					<div>
+						{
+							Object.entries(this.props.sortByList).map((sortType) => {
+								return (
+									<div className="posts-arranger-types"
+										onClick={() => {this.props.sortPosts(sortType[1].name)}}
+										key = {sortType}
+									>
+										<img 
+											className="posts-arranger-types-icon" 
+											alt="" 
+											src={require('../resources/icon/'+sortType[1].img)}
+										></img>
+										<span className="posts-arranger-types-name">{sortType[1].title}</span>
+									</div>
+								)
+							})
+						}
+					</div>
 				</Modal>
 			</div>
 		)
 	}
 }
 
-function mapStateToProps (state) {
+function mapStateToProps ({ sortByList, sortPosts }) {
 	return {
-		sortBy: state.sortPosts,
+		sortBy: sortPosts,
+		sortByList: sortByList,
 	}
 }
 
