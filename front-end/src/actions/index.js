@@ -1,10 +1,16 @@
-export const MOCK_RECUDER = 'MOCK_RECUDER'
+export const DISPLAY_CATEGORY_CHANGER = 'DISPLAY_CATEGORY_CHANGER'
+export const CHANGE_CATEGORY = 'CHANGE_CATEGORY'
 
-export function mockReducer ({ para1, para2, para3 }) {
+export function displayCategoryChanger (isModalOpen) {
 	return {
-		type: MOCK_RECUDER,
-		para1,
-		para2,
-		para3,
+		type: DISPLAY_CATEGORY_CHANGER,
+		isModalOpen,
+	}
+}
+
+export function changeCategory (newCategory) {
+	return {
+		type: CHANGE_CATEGORY,
+		newCategory,
 	}
 }
