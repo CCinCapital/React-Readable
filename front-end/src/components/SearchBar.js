@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 class SearchBar extends Component {
 
@@ -8,7 +7,7 @@ class SearchBar extends Component {
 			<div className="search-bar-wraper">
 				<div className="search-bar">
 					<i className="search-ico"></i>
-					<input className="search" type="text" placeholder="Search"></input>
+					<input className="search" type="text" placeholder="Search under topic..."></input>
 				</div>
 			</div>
 		)

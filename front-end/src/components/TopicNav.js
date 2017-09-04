@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Topic from './Topic'
 
 class TopicNav extends Component {
@@ -8,6 +7,46 @@ class TopicNav extends Component {
 		return (
 			<div className="topic-nav-wraper">
 				<div className="topic-nav">
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
+					<Topic
+					></Topic>
 					<Topic
 					></Topic>
 					<Topic

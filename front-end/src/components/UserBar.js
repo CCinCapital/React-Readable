@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 class SearchBar extends Component {
 
@@ -7,11 +6,11 @@ class SearchBar extends Component {
 		return (
 			<div className="user-bar-wraper">
 				<div className="user-bar">
-					<img className="user-avatar" src={require('./icon/user1.jpg')}></img>
+					<img className="user-avatar" alt="" src={require('../resources/icon/user1.jpg')}></img>
 					<div className="user-nickname">
 						<span className="user-nickname-display-name">Can*233945811111</span>
 					</div>
-					<a className="user-opt" href=""></a>			
+					<div className="user-opt" href="#id"></div>			
 				</div>
 			</div>
 		)

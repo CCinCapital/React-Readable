@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import ReplyPanelActionBar from './ReplyPanelActionBar'
 import ReplyPanelInputArea from './ReplyPanelInputArea'
 import ReplyPanelSubmitButton from './ReplyPanelSubmitButton'

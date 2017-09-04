@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+
+/*
 import { getAllCategories } from '../utils/API'
 import { getAllPosts } from '../utils/API'
 import { getAllPostsInCategory } from '../utils/API'
@@ -14,10 +15,12 @@ import { addCommentToPost } from '../utils/API'
 import { voteComment } from '../utils/API'
 import { editComment } from '../utils/API'
 import { deleteComment } from '../utils/API'
+*/
 
 class Article extends Component {
 
 	componentDidMount() {
+		/*
 		console.log(getAllCategories())
 		console.log(getAllPosts())
 		console.log(getAllPostsInCategory('redux'))
@@ -32,6 +35,7 @@ class Article extends Component {
 		console.log(voteComment("321tuq4ut84ut8v4t8wun89g", "upVote"))
 		console.log(editComment("321tuq4ut84ut8v4t8wun89g", Date.now(), "this new body"))
 		console.log(deleteComment("321tuq4ut84ut8v4t8wun89g"))
+		*/
 	}
 
 	render () {

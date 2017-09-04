@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import UserBar from './UserBar'
 import SearchBar from './SearchBar'
-import Tab from './Tab'
+import CategoryTab from './CategoryTab'
 import TopicNav from './TopicNav'
 
 class ControlPanel extends Component {
@@ -12,10 +11,10 @@ class ControlPanel extends Component {
 			<div className="panel">
 				<UserBar
 				></UserBar>
+				<CategoryTab
+				></CategoryTab>
 				<SearchBar
 				></SearchBar>
-				<Tab
-				></Tab>
 				<TopicNav
 				></TopicNav>
 			</div>

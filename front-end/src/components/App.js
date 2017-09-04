@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
-import '../App.css'
+import '../styles/App.css'
 import ControlPanel from './ControlPanel'
 import ContentWindow from './ContentWindow'
 
