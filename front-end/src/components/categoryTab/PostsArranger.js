@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
 import { connect } from 'react-redux'
-import { sortPosts, displayPostsSorter } from '../actions'
+import { sortPosts, displayPostsSorter } from '../../actions'
 
 class PostsArranger extends Component {
 
@@ -14,7 +14,7 @@ class PostsArranger extends Component {
 				<img 
 					className="posts-arranger-icon" 
 					alt="" 
-					src={require('../resources/icon/'+sortTypeImg)}
+					src={require('../../resources/icon/'+sortTypeImg)}
 					onClick={()=>(this.props.displayPostsSorter(true))}
 				></img>
 				<Modal
@@ -35,7 +35,7 @@ class PostsArranger extends Component {
 										<img 
 											className="posts-arranger-types-icon" 
 											alt="" 
-											src={require('../resources/icon/'+sortType[1].img)}
+											src={require('../../resources/icon/'+sortType[1].img)}
 										></img>
 										<span className="posts-arranger-types-name">{sortType[1].title}</span>
 									</div>

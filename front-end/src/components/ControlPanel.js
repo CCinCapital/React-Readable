@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserBar from './UserBar'
 import SearchBar from './SearchBar'
-import CategoryTab from './CategoryTab'
+import CategoryTab from './categoryTab/CategoryTab'
 import TopicNav from './TopicNav'
 
 class ControlPanel extends Component {

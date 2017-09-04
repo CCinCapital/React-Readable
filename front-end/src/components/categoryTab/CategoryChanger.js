@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { displayCategoryChanger, changeCategory } from '../actions'
+import { displayCategoryChanger, changeCategory } from '../../actions'
 import Modal from 'react-modal'
 
 
@@ -19,7 +19,7 @@ class CategoryChanger extends Component {
 					<img 
 						className="category-changer-icon" 
 						alt="" 
-						src={require('../resources/icon/'+categoryImg)}
+						src={require('../../resources/icon/'+categoryImg)}
 					></img>
 					<span className="category-name">{categoryTitle}</span>
 				</div>
@@ -41,7 +41,7 @@ class CategoryChanger extends Component {
 										<img 
 											className="category-changer-icon" 
 											alt="" 
-											src={require('../resources/icon/'+category[1].img)}
+											src={require('../../resources/icon/'+category[1].img)}
 										></img>
 										<span className="category-name">{category[1].title}</span>
 									</div>
