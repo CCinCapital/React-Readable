@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 
 import {
-	CHANGE_CATEGORY,
 	DISPLAY_CATEGORY_CHANGER,
+	CHANGE_CATEGORY,
+	DISPLAY_POSTS_SORTER,
+	SORT_POSTS,
 } from '../actions'
 
 
@@ -29,15 +31,16 @@ const initialCategoriesState = {
 	},
 }
 
-const initialCategorySelectorState = {
-	isModalOpen: false,
-	category: 'all',
-}
-
 function categoryList (state = initialCategoriesState) {
 	return {
 		...initialCategoriesState,
 	}
+}
+
+
+const initialCategorySelectorState = {
+	isModalOpen: false,
+	category: 'all',
 }
 
 function activeCategory (state = initialCategorySelectorState, action) {
@@ -59,7 +62,31 @@ function activeCategory (state = initialCategorySelectorState, action) {
 }
 
 
+const initialPostsSortByState = {
+	isModalOpen: false,
+	sortBy: 'timestamp',
+}
+
+function sortPosts (state = initialPostsSortByState, action) {
+	switch (action.type) {
+		case DISPLAY_POSTS_SORTER:
+			return {
+				...state,
+				isModalOpen: action.isModalOpen
+			}
+		case SORT_POSTS:
+			return {
+				...state,
+				isModalOpen: false,
+				sortBy: action.sortBy,
+			}
+		default:
+			return state
+	}
+}
+
 export default combineReducers({
 	categoryList,
 	activeCategory,
+	sortPosts,
 }) 

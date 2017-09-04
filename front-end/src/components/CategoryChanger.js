@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { displayCategoryChanger, changeCategory } from '../actions'
 import Modal from 'react-modal'
+import PostsArranger from './PostsArranger'
 
 class CategoryChanger extends Component {
 
@@ -13,7 +14,8 @@ class CategoryChanger extends Component {
 		return (
 			<div>
 				<div className="category-changer"
-					onClick={() => {this.props.displayCategoryChanger(true)}}>
+					onClick={() => {this.props.displayCategoryChanger(true)}}
+				>
 					<img 
 						className="category-changer-icon" 
 						alt="" 
@@ -21,11 +23,8 @@ class CategoryChanger extends Component {
 					></img>
 					<span className="category-name">{categoryTitle}</span>
 				</div>
-				<img 
-					className="category-changer-arrange" 
-					alt="" 
-					src={require('../resources/icon/arrange.svg')}
-				></img>
+				<PostsArranger
+				></PostsArranger>
 				<Modal
 					className='modal'
 					overlayClassName='overlay'
@@ -33,7 +32,7 @@ class CategoryChanger extends Component {
 					onRequestClose={() => {this.props.displayCategoryChanger(false)}}
 					contentLabel='Modal'
 				>
-					<div className="category-changer">
+					<div>
 						{
 							Object.entries(this.props.categoryList).map((category) => {
 								return (

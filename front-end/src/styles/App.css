@@ -111,16 +111,22 @@ html, body {
 
 .category-changer-arrange {
 	position: absolute;
-	width: 30px;
-	height: 30px;
+	width: 60px;
+	height: 60px;
 	top: 0;
 	right: 0;
-	padding: 15px;
 	cursor: pointer;
+	z-index: 101;
 }
 
 .category-changer-arrange:hover {
 	background-color: #000000;
+}
+
+.category-changer-arrange-icon {
+	width: 30px;
+	height: 30px;
+	padding: 15px;
 }
 /* Category tab ends */
 
