@@ -11,10 +11,8 @@ class App extends Component {
             <div className="App">
                 <Route path="/" render={({ history }) => (
                     <div>
-                        <ControlPanel
-                        ></ControlPanel>
-                        <ContentWindow
-                        ></ContentWindow>
+                        <ControlPanel/>
+                        <ContentWindow/>
                     </div>
                 )}/> 
             </div>

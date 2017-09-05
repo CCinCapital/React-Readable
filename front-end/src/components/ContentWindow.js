@@ -8,12 +8,9 @@ class ContentWindow extends Component {
 	render () {
 		return (
 			<div>
-				<ChatTopic
-				></ChatTopic>
-				<ChatArea
-				></ChatArea>
-				<ReplyPanel
-				></ReplyPanel>
+				<ChatTopic/>
+				<ChatArea/>
+				<ReplyPanel/>
 			</div>
 		)
 	}
