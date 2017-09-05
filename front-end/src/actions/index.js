@@ -8,8 +8,11 @@ export const SORT_POSTS = 'SORT_POSTS'
 
 export const DISPLAY_POSTS_EDITOR = 'DISPLAY_POSTS_EDITOR'
 export const SUBMIT_POST = 'SUBMIT_POST'
+export const RECEIVE_POST = 'RECEIVE_POST'
 
 export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS"
+
+export const GET_USER = 'GET_USER'
 
 export function displayCategoryChanger (isModalOpen) {
 	return {
@@ -46,14 +49,6 @@ export function displayPostEditor (isModalOpen) {
 	}
 }
 
-export function submitPost ({ title, content }) {
-	return {
-		type: SUBMIT_POST,
-		title,
-		content,
-	}
-}
-
 export function receiveAllPosts (posts) {
 	return {
 		type: RECEIVE_ALL_POSTS,
@@ -66,5 +61,27 @@ export function fetchAllPosts () {
 		fetch
 			.getAllPosts()
 			.then(posts => dispatch(receiveAllPosts(posts)))
+	}
+}
+
+export function receivePost (post) {
+	return {
+		type: RECEIVE_POST,
+		post,
+	}
+}
+
+export function submitPost ({ id, timestamp, title, body, author, category }) {
+	return dispatch => {
+		fetch
+			.addNewPost(id, timestamp, title, body, author, category)
+			.then(post => dispatch(receivePost(post)))
+	}
+}
+
+export function getUser (user) {
+	return {
+		type: GET_USER,
+		user,
 	}
 }

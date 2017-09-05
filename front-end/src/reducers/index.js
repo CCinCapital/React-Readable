@@ -5,6 +5,11 @@ import {
 	CHANGE_CATEGORY,
 	DISPLAY_POSTS_SORTER,
 	SORT_POSTS,
+	DISPLAY_POSTS_EDITOR,
+	SUBMIT_POST,
+	RECEIVE_ALL_POSTS,
+	RECEIVE_POST,
+	GET_USER,
 } from '../actions'
 
 
@@ -109,9 +114,74 @@ function sortPosts (state = initialPostsSortByState, action) {
 	}
 }
 
+const initialPostEditorState = {
+	isModalOpen: false,
+	title: null,
+	content: null,
+}
+
+function postEditor (state = initialPostEditorState, action) {
+	switch (action.type) {
+		case DISPLAY_POSTS_EDITOR:
+			return {
+				...state,
+				isModalOpen: action.isModalOpen,
+			}
+		case SUBMIT_POST:
+			return {
+				...state,
+				isModalOpen: false,
+			}
+		default:
+			return state
+	}
+}
+
+
+function allPosts (state = {}, action) {
+	switch (action.type) {
+		case RECEIVE_ALL_POSTS:
+			return {
+				...state,
+				posts: action.posts,
+			}
+		case RECEIVE_POST: 
+			return {
+				...state,
+				posts: {
+					...state.posts,
+					[state.posts.length]: action.post,
+				}
+			}
+			
+		default:
+			return state
+	}
+}
+
+
+const initialUserState = {
+	user: 'anonymous'
+}
+
+function user (state = initialUserState, action) {
+	switch (action.type) {
+		case GET_USER:
+			return {
+				...state,
+				user: action.user,
+			}
+		default: 
+			return state
+	}
+}
+
 export default combineReducers({
 	categoryList,
 	activeCategory,
 	sortByList,
 	sortPosts,
+	postEditor,
+	allPosts,
+	user,
 }) 

@@ -235,35 +235,23 @@ html, body {
 	bottom: 0;
 	left: 0;
 	position: absolute;
-	padding: 0px 0px 0px 10px;
+	padding: 0px 0px 0px 0px;
 }
 
-.topic-nav {
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-	padding: 0 !important;
-	left: 0px;
-	margin: 0px;
-	padding: 0;
-	position: relative !important;
-	top: 0;
+.topic-nav-wraper:hover {
+	/*overflow-y: auto;*/
 }
 
-.topic-nav:hover {
-	overflow-y: auto;
-}
-
-.topic-nav::-webkit-scrollbar {  
+.topic-nav-wraper::-webkit-scrollbar {  
     width: 10px;   
     background-color: #2E3238;  
 } 
 
-.topic-nav::-webkit-scrollbar-track {  
+.topic-nav-wraper::-webkit-scrollbar-track {  
     background-color: #2E3238;  
 }  
 
-.topic-nav::-webkit-scrollbar-thumb { 
+.topic-nav-wraper::-webkit-scrollbar-thumb { 
 	border-radius: 10px; 
     background-color: #000;  
 }  
@@ -272,7 +260,7 @@ html, body {
 /* Topic starts */
 .topic-wraper {
 	width: 100%;
-	overflow: hidden;
+	height: 59px;
 	border-bottom: 1px solid #292C33;
 	cursor: pointer;
 	position: relative;
@@ -280,27 +268,39 @@ html, body {
 }
 
 .topic-wraper:hover {
-	background-color: #000000;
+	background-color: #26292E;
 }
 
 .topic-icon {
-	margin: 10px 0px 10px 10px;
+	position: absolute;
+	margin: 10px 0px 10px 20px;
 	width: 40px;
 	height: 40px;
 	-webkit-border-radius: 2px;
 	display: inline-block;
 	cursor: pointer;
 	vertical-align: middle;
+	z-index: 9;
 }
 
 .topic {
+	position: absolute;
+	left: 0px;
 	width: 180px;
-	padding-left: 11px;
+	-webkit-transition: width 0.25s;
+	padding: 10px 30px 10px 70px;
 	display: inline-block;
 	vertical-align: middle;
 }
 
-.topic-topic {
+.topic:hover {
+	width: auto;
+	border-radius: 5px;
+	-webkit-transition: width 0.25s;
+	background-color: #26292E;
+}
+
+.topic-title {
 	display: block;
 	font-weight: 400;
 	overflow: hidden;
@@ -337,7 +337,8 @@ html, body {
 	background-color: red;
 	position: absolute;
 	top: 5px;
-	left: 46px;
+	left: 56px;
+	z-index: 10;
 }
 /* Topic ends */
 /* 

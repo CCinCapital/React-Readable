@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import { submitPost, displayPostEditor } from '../../actions'
+import { uuid } from '../../utils/helper'
 
 class NewPost extends Component {
 
 	state = {
 		title: null,
 		content: null,
+		category: null,
 	}
 
 	handleTitle = (e) => {
@@ -31,12 +33,16 @@ class NewPost extends Component {
 	}
 
 	handleSubmit = (e) => {
+		const id = uuid()
+		const author = this.props.user
+		const category = this.state.category
 		const title = this.state.title
-		const content = this.state.content
+		const body = this.state.content
 		const timestamp = Date.now()
+
 		console.log(Date(timestamp*1000))
 
-		this.props.submitPost({ title, content })
+		this.props.submitPost({ id, timestamp, title, body, author, category })
 		this.setState({
 			title: null,
 			content: null,			
@@ -94,9 +100,10 @@ class NewPost extends Component {
 	}
 }
 
-function mapStateToProps ({ postEditor }) {
+function mapStateToProps ({ postEditor, user }) {
 	return {
 		postEditor: postEditor,
+		user: user.user,
 	}
 }
 
