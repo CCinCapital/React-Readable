@@ -10,6 +10,8 @@ import {
 	RECEIVE_ALL_POSTS,
 	RECEIVE_POST,
 	GET_USER,
+	ACTIVE_POST,
+	RECEIVE_COMMENTS,
 } from '../actions'
 
 
@@ -176,6 +178,23 @@ function user (state = initialUserState, action) {
 	}
 }
 
+function activePost (state={}, action) {
+	switch (action.type) {
+		case ACTIVE_POST:
+			return {
+				...state,
+				post: action.post,
+			}
+		case RECEIVE_COMMENTS:
+			return {
+				...state,
+				comments: action.comments,
+			}
+		default:
+			return state
+	}
+}
+
 export default combineReducers({
 	categoryList,
 	activeCategory,
@@ -184,4 +203,5 @@ export default combineReducers({
 	postEditor,
 	allPosts,
 	user,
+	activePost,
 }) 

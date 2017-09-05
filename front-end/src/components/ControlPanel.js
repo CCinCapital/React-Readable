@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import UserBar from './UserBar'
 import PostTab from './postTab/PostTab'
 import CategoryTab from './categoryTab/CategoryTab'
-import TopicNav from './TopicNav'
+import TopicNav from './topicTab/TopicNav'
 
 class ControlPanel extends Component {
 

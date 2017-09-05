@@ -14,6 +14,10 @@ export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS"
 
 export const GET_USER = 'GET_USER'
 
+export const ACTIVE_POST = 'ACTIVE_POST'
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
+
+
 export function displayCategoryChanger (isModalOpen) {
 	return {
 		type: DISPLAY_CATEGORY_CHANGER,
@@ -76,6 +80,28 @@ export function submitPost ({ id, timestamp, title, body, author, category }) {
 		fetch
 			.addNewPost(id, timestamp, title, body, author, category)
 			.then(post => dispatch(receivePost(post)))
+	}
+}
+
+export function receiveComments (comments) {
+	return {
+		type: RECEIVE_COMMENTS,
+		comments,
+	}
+}
+
+export function fetchCommentsUnderPost (post_id) {
+	return dispatch => {
+		fetch
+			.getALLCommentsOfPost(post_id)
+			.then(comments => dispatch(receiveComments(comments)))
+	}
+}
+
+export function activePost (post) {
+	return {
+		type: ACTIVE_POST,
+		post,
 	}
 }
 

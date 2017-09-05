@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Topic from './Topic'
-import { fetchAllPosts } from '../actions'
+import { fetchAllPosts } from '../../actions'
 import { connect } from 'react-redux'
 
 class TopicNav extends Component {
@@ -23,8 +23,7 @@ class TopicNav extends Component {
 					return (
 						<Topic
 							key={post[1].id}
-							title={post[1].title}
-							body={post[1].body}
+							post={post[1]}
 						/>
 					)
 				})

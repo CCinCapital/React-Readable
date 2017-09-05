@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ChatTopic from './ChatTopic'
-import ChatArea from './ChatArea'
+import ChatTopic from './chatArea/ChatTopic'
+import ChatArea from './chatArea/ChatArea'
 import ReplyPanel from './ReplyPanel'
 
 class ContentWindow extends Component {

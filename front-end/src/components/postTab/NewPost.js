@@ -43,9 +43,11 @@ class NewPost extends Component {
 		console.log(Date(timestamp*1000))
 
 		this.props.submitPost({ id, timestamp, title, body, author, category })
+		
 		this.setState({
 			title: null,
-			content: null,			
+			content: null,
+			category: null,			
 		})
 
 		this.props.displayPostEditor(false)

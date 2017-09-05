@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class ArticleReply extends Component {
+class Reply extends Component {
 
 	render () {
 		return (
@@ -10,11 +10,11 @@ class ArticleReply extends Component {
 						<p className="article-reply-plain">{this.props.reply}</p>
 					</div>	
 					<div className="article-reply-pointer"></div>
-					<img className="article-reply-user-icon" alt="" src={require('../resources/icon/user1.jpg')}></img>
+					<img className="article-reply-user-icon" alt="" src={require('../../resources/icon/user1.jpg')}></img>
 				</div>
 			</div>
 		)
 	}
 }
 
-export default ArticleReply
+export default Reply
