@@ -17,16 +17,31 @@ class TopicNav extends Component {
 				</div>
 			)
 		} 
+		else if (this.props.allPosts !== undefined && this.props.activeCategory === 'all') {
+			return (
+				Object.entries(this.props.allPosts)
+					.map((post) => {
+						return (
+							<Topic
+								key={post[1].id}
+								post={post[1]}
+							/>
+						)
+					})
+			)
+		}
 		else {
 			return (
-				Object.entries(this.props.allPosts).map((post) => {
-					return (
-						<Topic
-							key={post[1].id}
-							post={post[1]}
-						/>
-					)
-				})
+				Object.entries(this.props.allPosts)
+					.filter((post) => post[1].category === this.props.activeCategory)
+					.map((post) => {
+						return (
+							<Topic
+								key={post[1].id}
+								post={post[1]}
+							/>
+						)
+					})
 			)
 		}
     }
@@ -40,9 +55,10 @@ class TopicNav extends Component {
 	}
 }
 
-function mapStateToProps ({ allPosts }) {
+function mapStateToProps ({ allPosts, activeCategory }) {
 	return {
 		allPosts: allPosts.posts,
+		activeCategory: activeCategory.category,
 	}
 }
 
