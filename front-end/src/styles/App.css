@@ -220,6 +220,7 @@ html, body {
 	padding: 15px 15px 15px 15px;
 	font-size: 20px;
 	color: #FFFFFF;
+	cursor: pointer;
 }
 
 .new-post:hover {
