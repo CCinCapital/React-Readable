@@ -28,8 +28,15 @@ class NewPost extends Component {
 		this.setState({
 			title: null,
 			content: null,
+			category: null,
 		})
 		this.props.displayPostEditor(false)
+	}
+
+	handleCategory = (e) => {
+		this.setState({
+			category: e.target.value,
+		})
 	}
 
 	handleSubmit = (e) => {
@@ -51,6 +58,28 @@ class NewPost extends Component {
 		})
 
 		this.props.displayPostEditor(false)
+	}
+
+	optionMenu () {
+		return (
+			Object.entries(this.props.categoryList).map((category) => {
+				if (category[1].category === 'all') {
+					return (
+						<option
+							key={category[1].category} 
+							value={category[1].category}
+							disabled='disabled'
+						>select a category</option> 
+					)
+				}
+				return (
+					<option
+						key={category[1].category} 
+						value={category[1].category}
+					>{category[1].title}</option> 
+				)
+			})
+		)
 	}
 
 	render () {
@@ -75,13 +104,29 @@ class NewPost extends Component {
 						src={require('../../resources/icon/discard_post.svg')}
 						onClick={this.handleDiscard}
 					></img>
-		        	<span className="post-editor-title">Edit Post</span>
+					<div
+						className='post-editor-title'
+					>
+						<span>New Post</span>
+			        </div>
 					<img
 						className="post-editor-submit"
 						alt=""
 						src={require('../../resources/icon/submit_post.svg')}
 						onClick={this.handleSubmit}
 					></img>
+					<div
+		        		className='post-editor-category-wraper'
+					>
+						<span>Category :</span>
+			        	<select
+							className='post-editor-category-selector'
+			        		defaultValue='all'
+							onClick={this.handleCategory}
+			        	>
+			        		{this.optionMenu()}
+			        	</select>
+		        	</div>
 		        	<input 
 			        	className="post-editor-input-title"
 						type="text" 
@@ -102,10 +147,11 @@ class NewPost extends Component {
 	}
 }
 
-function mapStateToProps ({ postEditor, user }) {
+function mapStateToProps ({ postEditor, user, categoryList }) {
 	return {
 		postEditor: postEditor,
 		user: user.user,
+		categoryList: categoryList,
 	}
 }
 
