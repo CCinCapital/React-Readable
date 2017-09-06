@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import UserBar from './UserBar'
+import UserBar from './userTab/UserBar'
 import PostTab from './postTab/PostTab'
 import CategoryTab from './categoryTab/CategoryTab'
 import TopicNav from './topicTab/TopicNav'
