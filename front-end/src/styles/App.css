@@ -27,6 +27,25 @@ html, body {
 	border-bottom: 1px solid #292C33;
 }
 
+.user-login-button {
+	width: 100%;
+	height: 100%;
+	font-size: 30px;
+	font-variant: small-caps;
+	color: #FFFFFF;
+	background-color: #2E3238;
+	outline: none;
+	border: none;
+}
+
+.user-login-button:hover {
+	background-color: #000000;
+}
+
+.user-login-button:active {
+	background-color: #2E3238;
+}
+
 .user-bar {
 	padding: 10px 20px;
 }
@@ -72,6 +91,61 @@ html, body {
 	background-position: -434px -398px;
 	background-size: 487px 462px;
 }
+
+/* User Login Modal Starts */
+.user-login-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 999;
+}
+
+.user-login-modal {
+  position: absolute;
+  top: 240px;
+  left: 200px;
+  right: 200px;
+  bottom: 240px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,.24), 0 3px 12px 0 rgba(0,0,0,.12);
+  min-width: 500px;
+}
+
+.user-login-modal-greeting {
+	display: block;
+	padding: 30px;
+	font-size: 30px;
+}
+
+.user-login-modal-input {
+	display: block;
+	margin: auto;
+	padding: 30px;
+	font-size: 30px;
+}
+
+.user-login-modal-submit {
+	display: block;
+	width: 100%;
+	font-size: 30px;
+	padding: 30px;
+	font-variant: small-caps;
+	color: #333333;
+	background-color: #FFFFFF;
+	outline: none;
+	border: none;
+}
+
+/* User Login Modal Ends */
 /* User bar ends */
 
 /* Category tab starts */
@@ -226,8 +300,147 @@ html, body {
 .new-post:hover {
 	background-color: #000000;
 }
-/* PostTab ends */
 
+/* Post Editor Starts */
+.post-editor-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 999;
+}
+
+.post-editor-modal {
+  position: absolute;
+  top: 40px;
+  left: 200px;
+  right: 200px;
+  bottom: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,.24), 0 3px 12px 0 rgba(0,0,0,.12);
+  min-width: 500px;
+}
+
+.post-editor-title {
+	display: inline-block;
+	width: 100%;
+	height: 57px;
+	border-bottom: 3px solid #292C33;
+	line-height: 60px;
+	text-align: center;
+	background-color: #EEEEEE;
+	font-size: 30px;
+}
+
+.post-editor-discard {
+	position: absolute;
+	left: 20px;
+	width: 27px;
+	height: 27px;
+	padding: 15px 15px 15px 15px;
+	background-color: #EEEEEE;
+}
+
+.post-editor-submit {
+	position: absolute;
+	right: 20px;
+	width: 27px;
+	height: 27px;
+	padding: 15px 15px 15px 15px;
+	background-color: #EEEEEE;
+}
+
+.post-editor-discard:hover, .post-editor-submit:hover {
+	background-color: #DDDDDD;
+}
+
+.post-editor-category-wraper {
+	display: block;
+	width: 100%;
+	height: 58px;
+	border: none;
+	line-height: 58px;
+	font-size: 20px;
+	font-weight: 400;
+	border-bottom: 2px solid #DDDDDD;
+	outline: none;
+	background-color: #FFFFFF;
+}
+
+.post-editor-category-selector {
+	display: inline-block;
+	position: absolute;
+	font-variant: small-caps;
+	left: 130px;
+	height: 60px;
+	border: none;
+	line-height: 60px;
+	font-size: 30px;
+	font-weight: 400;
+	border-bottom: 2px solid #DDDDDD;
+	outline: none;
+	background-color: #FFFFFF;
+}
+
+.post-editor-input-title {
+	display: block;
+	width: 100%;
+	height: 58px;
+	border: none;
+	line-height: 58px;
+	font-size: 30px;
+	font-weight: 200;
+	border-bottom: 2px solid #DDDDDD;
+	outline: none;
+}
+
+.post-editor-input-title:focus {
+	background-color: #EEEEEE;
+	border-bottom: 2px solid #00BFFF;
+}
+
+.post-editor-input-title:hover, .post-editor-input-content:hover {
+	background-color: #EEEEEE;
+}
+
+.post-editor-input-content:focus {
+	background-color: #EEEEEE;
+}
+
+.post-editor-input-content-wraper {
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	bottom: 20px;
+	top: 202px;
+}
+
+.post-editor-input-content {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: none;
+	line-height: 30px;
+	font-size: 20px;
+	font-weight: 200;
+	outline: none;
+	white-space: pre-wrap;
+	word-break: normal;
+	resize: none;
+	padding: 0;
+	overflow: auto;
+}
+
+/* Post Editor Ends */
+/* PostTab ends */
 
 /* Topic navigator starts */
 .topic-nav-wraper {
@@ -591,140 +804,3 @@ html, body {
 /* 
 	Chat area ends 
 */
-.post-editor-overlay {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  background-color: rgba(255, 255, 255, 0.75);
-  z-index: 999;
-}
-
-.post-editor-modal {
-  position: absolute;
-  top: 40px;
-  left: 200px;
-  right: 200px;
-  bottom: 40px;
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
-  overflow: auto;
-  border-radius: 4px;
-  outline: none;
-  padding: 20px;
-  border-radius: 3px;
-  box-shadow: 0 3px 8px 0 rgba(0,0,0,.24), 0 3px 12px 0 rgba(0,0,0,.12);
-  min-width: 500px;
-}
-
-.post-editor-title {
-	display: inline-block;
-	width: 100%;
-	height: 57px;
-	border-bottom: 3px solid #292C33;
-	line-height: 60px;
-	text-align: center;
-	background-color: #EEEEEE;
-	font-size: 30px;
-}
-
-.post-editor-discard {
-	position: absolute;
-	left: 20px;
-	width: 27px;
-	height: 27px;
-	padding: 15px 15px 15px 15px;
-	background-color: #EEEEEE;
-}
-
-.post-editor-submit {
-	position: absolute;
-	right: 20px;
-	width: 27px;
-	height: 27px;
-	padding: 15px 15px 15px 15px;
-	background-color: #EEEEEE;
-}
-
-.post-editor-discard:hover, .post-editor-submit:hover {
-	background-color: #DDDDDD;
-}
-
-.post-editor-category-wraper {
-	display: block;
-	width: 100%;
-	height: 58px;
-	border: none;
-	line-height: 58px;
-	font-size: 20px;
-	font-weight: 400;
-	border-bottom: 2px solid #DDDDDD;
-	outline: none;
-	background-color: #FFFFFF;
-}
-
-.post-editor-category-selector {
-	display: inline-block;
-	position: absolute;
-	font-variant: small-caps;
-	left: 130px;
-	height: 60px;
-	border: none;
-	line-height: 60px;
-	font-size: 30px;
-	font-weight: 400;
-	border-bottom: 2px solid #DDDDDD;
-	outline: none;
-	background-color: #FFFFFF;
-}
-
-.post-editor-input-title {
-	display: block;
-	width: 100%;
-	height: 58px;
-	border: none;
-	line-height: 58px;
-	font-size: 30px;
-	font-weight: 200;
-	border-bottom: 2px solid #DDDDDD;
-	outline: none;
-}
-
-.post-editor-input-title:focus {
-	background-color: #EEEEEE;
-	border-bottom: 2px solid #00BFFF;
-}
-
-.post-editor-input-title:hover, .post-editor-input-content:hover {
-	background-color: #EEEEEE;
-}
-
-.post-editor-input-content:focus {
-	background-color: #EEEEEE;
-}
-
-.post-editor-input-content-wraper {
-	position: absolute;
-	left: 20px;
-	right: 20px;
-	bottom: 20px;
-	top: 202px;
-}
-
-.post-editor-input-content {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	border: none;
-	line-height: 30px;
-	font-size: 20px;
-	font-weight: 200;
-	outline: none;
-	white-space: pre-wrap;
-	word-break: normal;
-	resize: none;
-	padding: 0;
-	overflow: auto;
-}
-

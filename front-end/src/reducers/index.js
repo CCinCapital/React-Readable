@@ -10,6 +10,8 @@ import {
 	RECEIVE_ALL_POSTS,
 	RECEIVE_POST,
 	GET_USER,
+	DISPLAY_USER_LOGIN,
+	LOGIN_USER,
 	ACTIVE_POST,
 	RECEIVE_COMMENTS,
 } from '../actions'
@@ -163,7 +165,8 @@ function allPosts (state = {}, action) {
 
 
 const initialUserState = {
-	user: 'anonymous'
+	user: null,
+	isModalOpen: false,
 }
 
 function user (state = initialUserState, action) {
@@ -172,6 +175,17 @@ function user (state = initialUserState, action) {
 			return {
 				...state,
 				user: action.user,
+			}
+		case DISPLAY_USER_LOGIN:
+			return {
+				...state,
+				isModalOpen: action.isModalOpen,
+			}
+		case LOGIN_USER: 
+			return {
+				...state,
+				user: action.user,
+				isModalOpen: false,
 			}
 		default: 
 			return state

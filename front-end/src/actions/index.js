@@ -13,6 +13,8 @@ export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS"
 
 export const GET_USER = 'GET_USER'
+export const DISPLAY_USER_LOGIN = 'DISPLAY_USER_LOGIN'
+export const LOGIN_USER = 'LOGIN_USER'
 
 export const ACTIVE_POST = 'ACTIVE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
@@ -108,6 +110,20 @@ export function activePost (post) {
 export function getUser (user) {
 	return {
 		type: GET_USER,
+		user,
+	}
+}
+
+export function displayUserLogin (isModalOpen) {
+	return {
+		type: DISPLAY_USER_LOGIN,
+		isModalOpen,
+	}
+}
+
+export function loginUser (user) {
+	return {
+		type: LOGIN_USER,
 		user,
 	}
 }
