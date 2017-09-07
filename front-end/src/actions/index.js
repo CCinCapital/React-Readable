@@ -18,6 +18,8 @@ export const LOGIN_USER = 'LOGIN_USER'
 
 export const ACTIVE_POST = 'ACTIVE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
+export const POST_COMMENT = 'POST_COMMENT'
+export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 
 
 export function displayCategoryChanger (isModalOpen) {
@@ -125,5 +127,20 @@ export function loginUser (user) {
 	return {
 		type: LOGIN_USER,
 		user,
+	}
+}
+
+export function receiveComment (comment) {
+	return {
+		type: RECEIVE_COMMENT,
+		comment,
+	}
+}
+
+export function postComment ( comment_id, timestamp, body, author, parentId ) {
+	return dispatch => {
+		fetch
+			.addCommentToPost ( comment_id, timestamp, body, author, parentId )
+			.then(comment => dispatch(receiveComment(comment.id)))
 	}
 }

@@ -14,8 +14,8 @@ import {
 	LOGIN_USER,
 	ACTIVE_POST,
 	RECEIVE_COMMENTS,
+	RECEIVE_COMMENT,
 } from '../actions'
-
 
 const initialCategoriesList = {
 	all: {
@@ -157,7 +157,6 @@ function allPosts (state = {}, action) {
 					[state.posts.length]: action.post,
 				}
 			}
-			
 		default:
 			return state
 	}
@@ -166,7 +165,7 @@ function allPosts (state = {}, action) {
 
 const initialUserState = {
 	user: null,
-	isModalOpen: false,
+	isModalOpen: true,
 }
 
 function user (state = initialUserState, action) {
@@ -203,6 +202,14 @@ function activePost (state={}, action) {
 			return {
 				...state,
 				comments: action.comments,
+			}
+		case RECEIVE_COMMENT: 
+			return {
+				...state,
+				comments: {
+					...state.comments,
+					[Object.keys(state.comments).length]: action.comment,
+				}
 			}
 		default:
 			return state
