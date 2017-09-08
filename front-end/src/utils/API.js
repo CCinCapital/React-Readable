@@ -105,12 +105,8 @@ export function addNewPost ( post_id, timestamp, title, body, author, category )
 }
 
 //Used for voting on a post. [upVote] or [downVote]
-export function votePost ( post_id, option ) {
+export function votePost ( {post_id, option} ) {
 	let url = URL + '/posts/' + post_id
-
-	if ( option !== 'upVote' && option !== 'downVote') {
-		return -1
-	}
 
 	return fetch(url, {
 	    method: 'POST',
@@ -153,7 +149,7 @@ export function deletePost ( post_id ) {
 }
 
 //Add a comment to a post
-export function addCommentToPost ( post_id, timestamp, body, author, parentId ) {
+export function addCommentToPost ( comment_id, timestamp, body, author, parentId ) {
 	let url = URL + '/comments'
 
 	return fetch(url, {
@@ -162,11 +158,11 @@ export function addCommentToPost ( post_id, timestamp, body, author, parentId ) 
 	      ...HEADERS
 	    },
 	    body: JSON.stringify({
-	    	id: post_id,
+	    	id: comment_id,
+	    	parentId: parentId,
 	    	timestamp: timestamp,
 	    	body: body,
 	    	author: author,
-	    	parentId: parentId,
 	    })
 	}).then(res => res.json())	
 }

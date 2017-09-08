@@ -13,6 +13,7 @@ import {
 	DISPLAY_USER_LOGIN,
 	LOGIN_USER,
 	ACTIVE_POST,
+	VOTE_POST,
 	RECEIVE_COMMENTS,
 	RECEIVE_COMMENT,
 } from '../actions'
@@ -194,6 +195,11 @@ function user (state = initialUserState, action) {
 function activePost (state={}, action) {
 	switch (action.type) {
 		case ACTIVE_POST:
+			return {
+				...state,
+				post: action.post,
+			}
+		case VOTE_POST:
 			return {
 				...state,
 				post: action.post,

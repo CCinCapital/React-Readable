@@ -1,4 +1,4 @@
-import * as fetch from '../utils/API'
+import * as fetchAPI from '../utils/API'
 
 export const DISPLAY_CATEGORY_CHANGER = 'DISPLAY_CATEGORY_CHANGER'
 export const CHANGE_CATEGORY = 'CHANGE_CATEGORY'
@@ -17,6 +17,7 @@ export const DISPLAY_USER_LOGIN = 'DISPLAY_USER_LOGIN'
 export const LOGIN_USER = 'LOGIN_USER'
 
 export const ACTIVE_POST = 'ACTIVE_POST'
+export const VOTE_POST = 'VOTE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const POST_COMMENT = 'POST_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
@@ -66,7 +67,7 @@ export function receiveAllPosts (posts) {
 
 export function fetchAllPosts () {
 	return dispatch => {
-		fetch
+		fetchAPI
 			.getAllPosts()
 			.then(posts => dispatch(receiveAllPosts(posts)))
 	}
@@ -81,7 +82,7 @@ export function receivePost (post) {
 
 export function submitPost ({ id, timestamp, title, body, author, category }) {
 	return dispatch => {
-		fetch
+		fetchAPI
 			.addNewPost(id, timestamp, title, body, author, category)
 			.then(post => dispatch(receivePost(post)))
 	}
@@ -96,7 +97,7 @@ export function receiveComments (comments) {
 
 export function fetchCommentsUnderPost (post_id) {
 	return dispatch => {
-		fetch
+		fetchAPI
 			.getALLCommentsOfPost(post_id)
 			.then(comments => dispatch(receiveComments(comments)))
 	}
@@ -139,8 +140,23 @@ export function receiveComment (comment) {
 
 export function postComment ( comment_id, timestamp, body, author, parentId ) {
 	return dispatch => {
-		fetch
+		fetchAPI
 			.addCommentToPost ( comment_id, timestamp, body, author, parentId )
-			.then(comment => dispatch(receiveComment(comment.id)))
+			.then(comment => console.log(comment))
+	}
+}
+
+export function vote ( post_id, option) {
+	return dispatch => {
+		fetchAPI
+			.votePost ( post_id, option )
+			.then (post => dispatch(votePost(post)))
+	}
+}
+
+export function votePost (post) {
+	return {
+		type: VOTE_POST,
+		post,
 	}
 }

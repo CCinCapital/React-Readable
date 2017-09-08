@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Timestamp from '../timestamp'
+import Vote from '../vote'
 
 class Article extends Component {
 
@@ -17,6 +19,8 @@ class Article extends Component {
 							{this.props.content.body}
 						</span>
 					</div>
+					<Timestamp/>
+					<Vote/>
 				</div>
 			)
 		}

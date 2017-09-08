@@ -87,13 +87,15 @@ function vote (token, id, option) {
     post = posts[id]
     switch(option) {
         case "upVote":
+            console.log(`posts.vote received parameter: ${id} ${option}`)
             post.voteScore = post.voteScore + 1
             break
         case "downVote":
+            console.log(`posts.vote received parameter: ${id} ${option}`)
             post.voteScore = post.voteScore - 1
             break
         default:
-            console.log(`posts.vote received incorrect parameter: ${option}`)
+            console.log(`posts.vote received incorrect parameter: ${id} ${option}`)
     }
     res(post)
   })

@@ -804,3 +804,13 @@ html, body {
 /* 
 	Chat area ends 
 */
+.downVote {
+	height: 30px;
+	width: 30px;
+	transform: scaleY(-1);
+}
+
+.upVote {
+	height: 30px;
+	width: 30px;
+}
