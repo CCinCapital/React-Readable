@@ -11,7 +11,7 @@ class ArticleReply extends Component {
 					return (
 						<Reply
 							key={comment[1].id}
-							reply={comment[1].body}
+							comment={comment[1]}
 						/>
 					)
 				})

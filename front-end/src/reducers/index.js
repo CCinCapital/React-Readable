@@ -16,6 +16,7 @@ import {
 	VOTE_POST,
 	RECEIVE_COMMENTS,
 	RECEIVE_COMMENT,
+	UPDATE_COMMENT,
 } from '../actions'
 
 const initialCategoriesList = {
@@ -217,6 +218,19 @@ function activePost (state={}, action) {
 					[Object.keys(state.comments).length]: action.comment,
 				}
 			}
+		case UPDATE_COMMENT: {
+			const [key, ] = Object.entries(state.comments).filter(comment => comment[1].id === action.comment.id)
+			return {
+				...state,
+				comments: {
+					...state.comments,
+					[key[0]]: {
+						...state.comments[key[0]],
+						voteScore : action.comment.voteScore,
+					}				
+				}
+			}
+		}
 		default:
 			return state
 	}

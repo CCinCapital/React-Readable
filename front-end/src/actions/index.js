@@ -20,6 +20,8 @@ export const ACTIVE_POST = 'ACTIVE_POST'
 export const VOTE_POST = 'VOTE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const POST_COMMENT = 'POST_COMMENT'
+export const VOTE_COMMENT = 'VOTE_COMMENT'
+export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 
 
@@ -158,5 +160,20 @@ export function votePost (post) {
 	return {
 		type: VOTE_POST,
 		post,
+	}
+}
+
+export function voteComment ( comment_id, option) {
+	return dispatch => {
+		fetchAPI
+			.voteComment ( comment_id, option )
+			.then (comment => dispatch(updateComment(comment)))
+	}
+}
+
+export function updateComment (comment) {
+	return {
+		type: UPDATE_COMMENT,
+		comment,
 	}
 }

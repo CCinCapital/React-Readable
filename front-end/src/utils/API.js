@@ -168,12 +168,8 @@ export function addCommentToPost ( {comment_id, timestamp, body, author, parentI
 }
 
 //Used for voting on a comment. [upVote] or [downVote]
-export function voteComment ( comment_id, option ) {
+export function voteComment ( {comment_id, option} ) {
 	let url = URL + '/comments/' + comment_id
-
-	if ( option !== 'upVote' && option !== 'downVote') {
-		return -1
-	}
 
 	return fetch(url, {
 	    method: 'POST',

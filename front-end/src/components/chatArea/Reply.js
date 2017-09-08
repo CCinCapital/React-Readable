@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
+import VoteComment from '../voteComment'
 
 class Reply extends Component {
 
 	render () {
 		return (
-			<div className="article-reply-wraper">
+			<div className="article-reply-wraper"
+			>
 				<div className="article-reply">
 					<div className="article-reply-content">
-						<p className="article-reply-plain">{this.props.reply}</p>
+						<p className="article-reply-plain">{this.props.comment.body}</p>
 					</div>	
 					<div className="article-reply-pointer"></div>
 					<img className="article-reply-user-icon" alt="" src={require('../../resources/icon/user1.jpg')}></img>
 				</div>
+				<VoteComment
+					comment={this.props.comment}
+				/>
 			</div>
 		)
 	}

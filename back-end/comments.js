@@ -75,6 +75,7 @@ function add (token, comment) {
 }
 
 function vote (token, id, option) {
+  console.log(`comments.vote received incorrect parameter: ${id} ${option}`)
   return new Promise((res) => {
     let comments = getData(token)
     comment = comments[id]
