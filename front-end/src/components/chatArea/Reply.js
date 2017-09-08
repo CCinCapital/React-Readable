@@ -4,9 +4,24 @@ import VoteComment from '../voteComment'
 class Reply extends Component {
 
 	render () {
+		const timeStamp = JSON.stringify(new Date(this.props.comment.timestamp))
+
 		return (
 			<div className="article-reply-wraper"
 			>
+				<div className="">
+					<span>
+						{this.props.comment.author}
+					</span>
+					<span>
+						{timeStamp}
+					</span>
+					<span
+						onClick={() => (console.log('click'))}
+					>
+						Edit
+					</span>
+				</div>
 				<div className="article-reply">
 					<div className="article-reply-content">
 						<p className="article-reply-plain">{this.props.comment.body}</p>

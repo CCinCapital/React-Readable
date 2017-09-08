@@ -47,8 +47,6 @@ class NewPost extends Component {
 		const body = this.state.content
 		const timestamp = Date.now()
 
-		console.log(Date(timestamp*1000))
-
 		this.props.submitPost({ id, timestamp, title, body, author, category })
 		
 		this.setState({
