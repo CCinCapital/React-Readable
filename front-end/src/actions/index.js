@@ -138,11 +138,11 @@ export function receiveComment (comment) {
 	}
 }
 
-export function postComment ( comment_id, timestamp, body, author, parentId ) {
+export function postComment ( {comment_id, timestamp, body, author, parentId} ) {
 	return dispatch => {
 		fetchAPI
-			.addCommentToPost ( comment_id, timestamp, body, author, parentId )
-			.then(comment => console.log(comment))
+			.addCommentToPost ( {comment_id, timestamp, body, author, parentId} )
+			.then(comment => dispatch(receiveComment(comment)))
 	}
 }
 

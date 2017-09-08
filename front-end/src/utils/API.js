@@ -149,7 +149,7 @@ export function deletePost ( post_id ) {
 }
 
 //Add a comment to a post
-export function addCommentToPost ( comment_id, timestamp, body, author, parentId ) {
+export function addCommentToPost ( {comment_id, timestamp, body, author, parentId} ) {
 	let url = URL + '/comments'
 
 	return fetch(url, {

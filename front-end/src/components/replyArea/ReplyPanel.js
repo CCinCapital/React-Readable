@@ -17,13 +17,13 @@ class ReplyPanel extends Component {
 	}
 
 	handleSubmit = (e) => {
-		const id = uuid()
+		const comment_id = uuid()
 		const author = this.props.user
 		const parentId = this.props.post.id
 		const body = this.state.content
 		const timestamp = Date.now()
 
-		this.props.postComment({ id, timestamp, body, author, parentId })
+		this.props.postComment({ comment_id, timestamp, body, author, parentId })
 		
 		this.setState({
 			content: "Reply...",

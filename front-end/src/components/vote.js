@@ -6,7 +6,6 @@ class Vote extends Component {
 
 	handleVote = (option) => {
 		const post_id = this.props.post.id
-		console.log(option)
 		this.props.vote({post_id , option})
 	}
 
