@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import { submitPost, displayPostEditor } from '../../actions'
 import { uuid } from '../../utils/helper'
+import TiEdit from 'react-icons/lib/ti/edit'
+import FaTrashO from 'react-icons/lib/fa/trash-o'
+import FaPaperPlane from 'react-icons/lib/fa/paper-plane'
 
 class NewPost extends Component {
 
@@ -83,12 +86,11 @@ class NewPost extends Component {
 	render () {
 		return (
 			<div>
-				<img
+				<TiEdit
 					className="new-post"
-					alt=""
-					src={require('../../resources/icon/newpost.svg')}
+					color='grey'
 					onClick={() => (this.props.displayPostEditor(true))}
-				></img>
+				/>
 		        <Modal
 		          className='post-editor-modal'
 		          overlayClassName='post-editor-overlay'
@@ -96,23 +98,21 @@ class NewPost extends Component {
 		          onRequestClose={() => (this.props.displayPostEditor(false))}
 		          contentLabel='post-editor-Modal'
 		        >
-					<img
+					<FaTrashO
 						className="post-editor-discard"
-						alt=""
-						src={require('../../resources/icon/discard_post.svg')}
+						color="grey"
 						onClick={this.handleDiscard}
-					></img>
+					/>
 					<div
 						className='post-editor-title'
 					>
 						<span>New Post</span>
 			        </div>
-					<img
+					<FaPaperPlane
 						className="post-editor-submit"
-						alt=""
-						src={require('../../resources/icon/submit_post.svg')}
+						color="green"
 						onClick={this.handleSubmit}
-					></img>
+					/>
 					<div
 		        		className='post-editor-category-wraper'
 					>

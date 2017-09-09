@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import UserBar from './userTab/UserBar'
-import PostTab from './postTab/PostTab'
-import CategoryTab from './categoryTab/CategoryTab'
-import TopicNav from './topicTab/TopicNav'
+import SearchTab from './searchTab/SearchTab'
+import CategoryTab from './arrangerTab/CategoryTab'
+import PostList from './postListTab/PostList'
 
 class ControlPanel extends Component {
 
@@ -11,8 +11,8 @@ class ControlPanel extends Component {
 			<div className="panel">
 				<UserBar/>
 				<CategoryTab/>
-				<PostTab/>
-				<TopicNav/>
+				<SearchTab/>
+				<PostList/>
 			</div>
 		)
 	}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PostControl from './PostControl'
 
-class ChatTopic extends Component {
+class PostTitleBar extends Component {
 
 	handleTitle () {
 		if (this.props.post === undefined) {
@@ -12,9 +13,12 @@ class ChatTopic extends Component {
 		}
 		else {
 			return (
-				<div className="chat-topic-wraper">
-					<span className="chat-topic">{this.props.post.title}</span>
-					<i className="chat-topic-menu"></i>
+				<div className="post-title-wraper">
+					<span className="post-title">{this.props.post.title}</span>
+					<PostControl 
+						className="post-contol"
+						post={this.props.post}
+					/>
 				</div>
 			)
 		}
@@ -38,4 +42,4 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatTopic)
+export default connect(mapStateToProps, mapDispatchToProps)(PostTitleBar)

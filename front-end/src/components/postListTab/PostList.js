@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Topic from './Topic'
+import Post from './Post'
 import { fetchAllPosts } from '../../actions'
 import { connect } from 'react-redux'
 
-class TopicNav extends Component {
+class PostList extends Component {
 
     componentDidMount() {
         this.props.fetchAllPosts()
@@ -12,9 +12,7 @@ class TopicNav extends Component {
     handlePosts () {
 		if (this.props.allPosts === undefined) {
 			return (
-				<div className="topic-nav">
-
-				</div>
+				<div></div>
 			)
 		} 
 		else if (this.props.allPosts !== undefined && this.props.activeCategory === 'all') {
@@ -22,7 +20,7 @@ class TopicNav extends Component {
 				Object.entries(this.props.allPosts)
 					.map((post) => {
 						return (
-							<Topic
+							<Post
 								key={post[1].id}
 								post={post[1]}
 							/>
@@ -36,7 +34,7 @@ class TopicNav extends Component {
 					.filter((post) => post[1].category === this.props.activeCategory)
 					.map((post) => {
 						return (
-							<Topic
+							<Post
 								key={post[1].id}
 								post={post[1]}
 							/>
@@ -48,17 +46,18 @@ class TopicNav extends Component {
 
 	render () {
 		return (
-			<div className="topic-nav-wraper">
+			<div className="post-list-wraper">
 				{this.handlePosts()}
 			</div>
 		)
 	}
 }
 
-function mapStateToProps ({ allPosts, activeCategory }) {
+function mapStateToProps ({ allPosts, activeCategory, sortPosts }) {
 	return {
 		allPosts: allPosts.posts,
 		activeCategory: activeCategory.category,
+		sortBy: sortPosts.sortBy,
 	}
 }
 
@@ -68,4 +67,4 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopicNav)
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)

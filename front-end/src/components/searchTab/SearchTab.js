@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import NewPost from './NewPost'
 
-class PostTab extends Component {
+class SearchTab extends Component {
 
 	render () {
 		return (
@@ -14,4 +14,4 @@ class PostTab extends Component {
 	}
 }
 
-export default PostTab
+export default SearchTab

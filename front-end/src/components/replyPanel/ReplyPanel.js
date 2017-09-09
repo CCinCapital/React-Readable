@@ -7,7 +7,7 @@ import { uuid } from '../../utils/helper'
 class ReplyPanel extends Component {
 
 	state = {
-		content: "Reply...",
+		content: undefined,
 	}
 
 	handleInput = (e) => {
@@ -26,7 +26,7 @@ class ReplyPanel extends Component {
 		this.props.postComment({ comment_id, timestamp, body, author, parentId })
 		
 		this.setState({
-			content: "Reply...",
+			content: undefined,
 		})
 	}
 
@@ -50,7 +50,7 @@ class ReplyPanel extends Component {
 						></textarea>
 					</div>
 					<div className="reply-action">
-						<span className="reply-description">Press Ctrl+Enter to start a new line</span>
+						<span className="reply-description">Readable App by Can Chen</span>
 						<button 
 							className="reply-button"
 							onClick={this.handleSubmit} 

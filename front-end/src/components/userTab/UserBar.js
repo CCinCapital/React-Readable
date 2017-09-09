@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loginUser, displayUserLogin } from '../../actions'
 import Modal from 'react-modal'
+import MdImage from 'react-icons/lib/md/image'
+import MdExit from 'react-icons/lib/md/exit-to-app'
 
 class UserBar extends Component {
 
@@ -15,9 +17,16 @@ class UserBar extends Component {
 		})
 	}
 
-	handleLogin = () => {
+	handleLogIn = () => {
 		const user = this.state.name
 		this.props.loginUser(user)
+	}
+
+	handleLogOut = () => {
+		this.setState({
+			name: null,
+		})
+		this.props.loginUser(null)
 	}
 
 	userBar () {
@@ -37,7 +46,7 @@ class UserBar extends Component {
 			          contentLabel='user-login-Modal'
 			        >
 			        	<span className='user-login-modal-greeting'>
-			        		Hi, What would like to be called?
+			        		Hi, What would you like to be called?
 			        	</span>
 			        	<input  
 			        		className='user-login-modal-input'
@@ -47,7 +56,7 @@ class UserBar extends Component {
 						></input>
 						<button  
 							className='user-login-modal-submit'
-							onClick={this.handleLogin}
+							onClick={this.handleLogIn}
 						>
 							<span>confirm</span>
 						</button>
@@ -59,10 +68,16 @@ class UserBar extends Component {
 			return (	
 				<div className="user-bar-wraper">	
 					<div className="user-bar">
-						<img className="user-avatar" alt="" src={require('../../resources/icon/user1.jpg')}></img>
-						<div className="user-nickname">
-							<span className="user-nickname-display-name">{this.props.user.user}</span>
-						</div>		
+						<MdImage
+							size={40}
+							color='grey'
+						/>
+						<span className="user-nickname">{this.props.user.user}</span>
+						<MdExit
+							color='grey'
+							onClick={this.handleLogOut}
+							className="user-bar-logout-button"
+						/>		
 					</div>
 				</div>
 			)			

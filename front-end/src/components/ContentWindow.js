@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import ChatTopic from './chatArea/ChatTopic'
-import ChatArea from './chatArea/ChatArea'
-import ReplyPanel from './replyArea/ReplyPanel'
+import PostTitleBar from './contentCanvas/PostTitleBar'
+import Canvas from './contentCanvas/Canvas'
+import ReplyPanel from './replyPanel/ReplyPanel'
 
 class ContentWindow extends Component {
 
 	render () {
 		return (
 			<div>
-				<ChatTopic/>
-				<ChatArea/>
+				<PostTitleBar/>
+				<Canvas/>
 				<ReplyPanel/>
 			</div>
 		)

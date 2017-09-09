@@ -17,7 +17,7 @@ export const DISPLAY_USER_LOGIN = 'DISPLAY_USER_LOGIN'
 export const LOGIN_USER = 'LOGIN_USER'
 
 export const ACTIVE_POST = 'ACTIVE_POST'
-export const VOTE_POST = 'VOTE_POST'
+export const UPDATE_POST = 'UPDATE_POST'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const POST_COMMENT = 'POST_COMMENT'
 export const VOTE_COMMENT = 'VOTE_COMMENT'
@@ -148,17 +148,17 @@ export function postComment ( {comment_id, timestamp, body, author, parentId} ) 
 	}
 }
 
-export function vote ( post_id, option) {
+export function votePost ( post_id, option) {
 	return dispatch => {
 		fetchAPI
 			.votePost ( post_id, option )
-			.then (post => dispatch(votePost(post)))
+			.then (post => dispatch(updatePost(post)))
 	}
 }
 
-export function votePost (post) {
+export function updatePost (post) {
 	return {
-		type: VOTE_POST,
+		type: UPDATE_POST,
 		post,
 	}
 }

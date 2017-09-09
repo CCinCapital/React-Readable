@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Article from './Article'
-import ArticleReply from './ArticleReply'
+import Post from './Post'
+import Comments from './Comments'
 import { connect } from 'react-redux'
 import { fetchCommentsUnderPost } from '../../actions'
 
-class ChatArea extends Component {
+class Canvas extends Component {
 
 	handleFetchComments () {
 		if ( this.props.post !== undefined) {
@@ -19,12 +19,11 @@ class ChatArea extends Component {
 	render () {
 		return (
 			<div className="chatArea">
-				<Article
+				<Post
 					content={this.props.post}
-				></Article>
-				<ArticleReply
-				></ArticleReply>
-				<div className="spacer-360px"></div>
+				/>
+				<Comments/>
+				<div className="spacer-230px"></div>
 			</div>
 		)
 	}
@@ -42,4 +41,4 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatArea)
+export default connect(mapStateToProps, mapDispatchToProps)(Canvas)

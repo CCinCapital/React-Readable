@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import IoIosSearch from 'react-icons/lib/io/ios-search'
 
 class SearchBar extends Component {
 
@@ -7,11 +8,10 @@ class SearchBar extends Component {
 		const placeholder = "Search under topic: " + this.props.category
 		return (
 			<div className="search-bar">
-				<img 
+				<IoIosSearch 
 					className="search-ico"
-					alt=""
-					src={require('../../resources/icon/search.svg')}
-					></img>
+					color="grey"
+				/>
 				<input 
 					className="search-input" 
 					type="text" 

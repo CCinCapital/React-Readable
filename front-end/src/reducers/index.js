@@ -13,7 +13,7 @@ import {
 	DISPLAY_USER_LOGIN,
 	LOGIN_USER,
 	ACTIVE_POST,
-	VOTE_POST,
+	UPDATE_POST,
 	RECEIVE_COMMENTS,
 	RECEIVE_COMMENT,
 	UPDATE_COMMENT,
@@ -200,7 +200,7 @@ function activePost (state={}, action) {
 				...state,
 				post: action.post,
 			}
-		case VOTE_POST:
+		case UPDATE_POST:
 			return {
 				...state,
 				post: action.post,
