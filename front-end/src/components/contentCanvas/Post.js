@@ -1,43 +1,54 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import PostVoter from './PostVoter'
 import TimeStamp from './TimeStamp'
 
+
 class Post extends Component {
 
-	handleContent() {
-		if (this.props.content === undefined) {
-			return (
-				<div>
-				</div>
-			)
-		}
-		else {
-		    const author = (this.props.content.author === null) ? "null" : this.props.content.author 
-		    const date = (new Date(this.props.content.timestamp)).toLocaleString().substr(0, 17) 
+  UI_Content() {
+    if (this.props.post === null || this.props.post === undefined) {
+      return (
+        <div></div>
+      )
+    }
+    else {
+        const author = (this.props.post.author === null) ? "null" : this.props.post.author 
+        const date = (new Date(this.props.post.timestamp)).toLocaleString().substr(0, 17) 
 
-			return (
-				<div className="post-wraper">
-					<TimeStamp
-						author={author}
-						date={date}
-						className="post-stamp"
-					/>
-					<div className="post-content">
-						<span>
-							{this.props.content.body}
-						</span>
-					</div>
-					<PostVoter
-						className="post-voter"
-					/>
-				</div>
-			)
-		}
-	}
+      return (
+        <div className="post-wraper">
+          <TimeStamp
+            author={author}
+            date={date}
+            className="post-stamp"
+          />
+          <div className="post-content">
+            <span>
+              {this.props.post.body}
+            </span>
+          </div>
+          <PostVoter
+            className="postVoter"
+          />
+        </div>
+      )
+    }
+  }
 
-	render () {
-		return this.handleContent()
-	}
+  render () {
+
+    return (
+      this.UI_Content()
+    )
+  }
 }
 
-export default Post
+function mapStateToProps ({ posts }) {
+  return {
+    post: posts.activePost.post,
+  }
+}
+
+export default connect(mapStateToProps)(Post)

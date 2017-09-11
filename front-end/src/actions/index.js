@@ -1,179 +1,302 @@
 import * as fetchAPI from '../utils/API'
 
-export const DISPLAY_CATEGORY_CHANGER = 'DISPLAY_CATEGORY_CHANGER'
-export const CHANGE_CATEGORY = 'CHANGE_CATEGORY'
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/*****************            Login           *********************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
 
-export const DISPLAY_POSTS_SORTER = 'DISPLAY_POSTS_SORTER'
-export const SORT_POSTS = 'SORT_POSTS'
-
-export const DISPLAY_POSTS_EDITOR = 'DISPLAY_POSTS_EDITOR'
-export const SUBMIT_POST = 'SUBMIT_POST'
-export const RECEIVE_POST = 'RECEIVE_POST'
-
-export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS"
-
-export const GET_USER = 'GET_USER'
-export const DISPLAY_USER_LOGIN = 'DISPLAY_USER_LOGIN'
+export const SHOW_USER_LOGIN = 'SHOW_USER_LOGIN'
 export const LOGIN_USER = 'LOGIN_USER'
 
-export const ACTIVE_POST = 'ACTIVE_POST'
-export const UPDATE_POST = 'UPDATE_POST'
-export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
-export const POST_COMMENT = 'POST_COMMENT'
-export const VOTE_COMMENT = 'VOTE_COMMENT'
-export const UPDATE_COMMENT = 'UPDATE_COMMENT'
-export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
-
-
-export function displayCategoryChanger (isModalOpen) {
-	return {
-		type: DISPLAY_CATEGORY_CHANGER,
-		isModalOpen,
-	}
-}
-
-export function changeCategory (newCategory) {
-	return {
-		type: CHANGE_CATEGORY,
-		newCategory,
-	}
-}
-
-export function displayPostsSorter (isModalOpen) {
-	return {
-		type: DISPLAY_POSTS_SORTER,
-		isModalOpen,
-	}
-}
-
-export function sortPosts (sortBy) {
-	return {
-		type: SORT_POSTS,
-		sortBy,
-	}
-}
-
-export function displayPostEditor (isModalOpen) {
-	return {
-		type: DISPLAY_POSTS_EDITOR,
-		isModalOpen,
-	}
-}
-
-export function receiveAllPosts (posts) {
-	return {
-		type: RECEIVE_ALL_POSTS,
-		posts,
-	}
-}
-
-export function fetchAllPosts () {
-	return dispatch => {
-		fetchAPI
-			.getAllPosts()
-			.then(posts => dispatch(receiveAllPosts(posts)))
-	}
-}
-
-export function receivePost (post) {
-	return {
-		type: RECEIVE_POST,
-		post,
-	}
-}
-
-export function submitPost ({ id, timestamp, title, body, author, category }) {
-	return dispatch => {
-		fetchAPI
-			.addNewPost(id, timestamp, title, body, author, category)
-			.then(post => dispatch(receivePost(post)))
-	}
-}
-
-export function receiveComments (comments) {
-	return {
-		type: RECEIVE_COMMENTS,
-		comments,
-	}
-}
-
-export function fetchCommentsUnderPost (post_id) {
-	return dispatch => {
-		fetchAPI
-			.getALLCommentsOfPost(post_id)
-			.then(comments => dispatch(receiveComments(comments)))
-	}
-}
-
-export function activePost (post) {
-	return {
-		type: ACTIVE_POST,
-		post,
-	}
-}
-
-export function getUser (user) {
-	return {
-		type: GET_USER,
-		user,
-	}
-}
-
-export function displayUserLogin (isModalOpen) {
-	return {
-		type: DISPLAY_USER_LOGIN,
-		isModalOpen,
-	}
+export function showUserLogin (isModalOpen) {
+  return {
+    type: SHOW_USER_LOGIN,
+    isModalOpen,
+  }
 }
 
 export function loginUser (user) {
-	return {
-		type: LOGIN_USER,
-		user,
-	}
+  return {
+    type: LOGIN_USER,
+    user,
+  }
 }
 
-export function receiveComment (comment) {
-	return {
-		type: RECEIVE_COMMENT,
-		comment,
-	}
+
+
+// Sorter
+export const SORT = 'SORT'
+export const SHOW_SORTER_OPTIONS = "SHOW_SORTER_OPTIONS"
+
+export function sort (sorter, opt) {
+  return {
+    type: SORT,
+    sorter,
+    opt,
+  }   
 }
 
-export function postComment ( {comment_id, timestamp, body, author, parentId} ) {
-	return dispatch => {
-		fetchAPI
-			.addCommentToPost ( {comment_id, timestamp, body, author, parentId} )
-			.then(comment => dispatch(receiveComment(comment)))
-	}
+export function showSorterOptions (sorter, opt) {
+  return {
+    type: SHOW_SORTER_OPTIONS,
+    sorter,
+    opt,
+  }
 }
 
-export function votePost ( post_id, option) {
-	return dispatch => {
-		fetchAPI
-			.votePost ( post_id, option )
-			.then (post => dispatch(updatePost(post)))
-	}
+
+
+// Filter
+export const FILT = 'FILT'
+export const SHOW_FILTER_OPTIONS = "SHOW_FILTER_OPTIONS"
+
+export function filt (opt) {
+  return {
+    type: FILT,
+    opt,
+  }   
 }
 
-export function updatePost (post) {
-	return {
-		type: UPDATE_POST,
-		post,
-	}
+export function showfilterOptions (opt) {
+  return {
+    type: SHOW_FILTER_OPTIONS,
+    opt,
+  }
 }
 
-export function voteComment ( comment_id, option) {
-	return dispatch => {
-		fetchAPI
-			.voteComment ( comment_id, option )
-			.then (comment => dispatch(updateComment(comment)))
-	}
+
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/*****************        Post Editor         *********************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+export const SHOW_POSTS_EDITOR = 'SHOW_POSTS_EDITOR'
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const ADD_POST = 'ADD_POST'
+export const REVISE_POST = 'REVISE_POST'
+export const ACTIVE_POST = 'ACTIVE_POST'
+export const HANDLE_EDIT_POST ='HANDLE_EDIT_POST'
+export const REMOVE_POST = 'REMOVE_POST'
+
+
+export function showPostEditor (post, isOpen, isNew) {
+  return {
+    type: SHOW_POSTS_EDITOR,
+    post,
+    isOpen,
+    isNew,
+  }
 }
 
-export function updateComment (comment) {
-	return {
-		type: UPDATE_COMMENT,
-		comment,
-	}
+export function addPost (post) {
+  return {
+    type: ADD_POST,
+    post,
+  }
 }
+
+export function asyncSubmitPost (post) {
+  return dispatch => {
+    fetchAPI
+      .addNewPost(post)
+      .then(post => dispatch(addPost(post)))
+  }
+}
+
+export function asyncFetchAllPosts () {
+  return dispatch => {
+    fetchAPI
+      .getAllPosts()
+      .then(posts => dispatch(receivePosts(posts)))
+  }
+}
+
+export function receivePosts (posts) {
+  return {
+    type: RECEIVE_POSTS,
+    posts,
+  }
+}
+
+export function handleEditPost (post) {
+  return {
+    type: HANDLE_EDIT_POST,
+    post,
+  }
+}
+
+export function activePost (post) {
+  return {
+    type: ACTIVE_POST,
+    post,
+  }
+}
+
+export function asyncUpdatePost (post) {
+  return dispatch => {
+    fetchAPI
+      .editPost (post)
+      .then (post => dispatch(revisePost(post)))
+  }
+}
+
+export function asyncVotePost (vote) {
+  return dispatch => {
+    fetchAPI
+      .votePost (vote)
+      .then (post => dispatch(revisePost(post)))
+  }
+}
+
+export function revisePost (post) {
+  return {
+    type: REVISE_POST,
+    post,
+  }
+}
+
+export function asyncDeletePost (post) {
+  return dispatch => {
+    fetchAPI
+      .deletePost (post.id)
+      .then (res => dispatch(removePost(post.id)))
+  }
+}
+
+export function removePost (id) {
+  return {
+    type: REMOVE_POST,
+    id,
+  }
+}
+
+
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/*****************           Comments         *********************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+/******************************************************************/
+export const SHOW_COMMENT_EDITOR = 'SHOW_COMMENT_EDITOR'
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
+export const ADD_COMMENT = 'ADD_COMMENT'
+export const HANDLE_EDIT_COMMENT = 'HANDLE_EDIT_COMMENT'
+export const REVISE_COMMENT = 'REVISE_COMMENT'
+export const VOTE_COMMENT = 'VOTE_COMMENT'
+export const REMOVE_COMMENT = 'REMOVE_COMMENT'
+
+
+export function receiveComments (comments) {
+  return {
+    type: RECEIVE_COMMENTS,
+    comments,
+  }
+}
+
+export function asyncFetchCommentsUnderPost (id) {
+  return dispatch => {
+    fetchAPI
+      .getALLCommentsOfPost(id)
+      .then(comments => dispatch(receiveComments(comments)))
+  }
+}
+
+export function addComment (comment) {
+  return {
+    type: ADD_COMMENT,
+    comment,
+  }
+}
+
+export function asyncPostComment (comment) {
+  return dispatch => {
+    fetchAPI
+      .addCommentToPost (comment)
+      .then(comment => dispatch(addComment(comment)))
+  }
+}
+
+export function handleEditComment (comment) {
+  return {
+    type: HANDLE_EDIT_COMMENT,
+    comment,
+  }
+}
+
+export function reviseComment (comment) {
+  return {
+    type: REVISE_COMMENT,
+    comment,
+  }
+}
+
+export function asyncUpdateComment (comment) {
+  return dispatch => {
+    fetchAPI
+      .editComment (comment)
+      .then (comment => dispatch(reviseComment(comment)))
+  }
+}
+
+export function asyncVoteComment (vote) {
+  return dispatch => {
+    fetchAPI
+      .voteComment (vote)
+      .then (comment => dispatch(reviseComment(comment)))
+  }
+}
+
+
+export function removeComment (id) {
+  return {
+    type: REMOVE_COMMENT,
+    id,
+  }
+}
+
+export function AsyncDeleteComment (comment) {
+  return dispatch => {
+    fetchAPI
+      .deleteComment (comment.id)
+      .then (res => dispatch(removeComment(comment.id)))
+  }
+}
+
+export function showCommentEditor (comment, editExistingComment) {
+  return {
+    type: SHOW_COMMENT_EDITOR,
+    comment,
+    editExistingComment,
+  }
+}
+

@@ -1,31 +1,47 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import IoIosSearch from 'react-icons/lib/io/ios-search'
+
 
 class SearchBar extends Component {
 
-	render () {
-		const placeholder = "Search under topic: " + this.props.category
-		return (
-			<div className="search-bar">
-				<IoIosSearch 
-					className="search-ico"
-					color="grey"
-				/>
-				<input 
-					className="search-input" 
-					type="text" 
-					placeholder={placeholder}
-				></input>
-			</div>
-		)
-	}
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    alert('err:  not yet implemented.')
+  }
+
+  render () {
+
+    const placeholder = "Search under topic: " + this.props.activeFilter
+    
+    return (
+      <form 
+        className={this.props.className}
+        onSubmit={this.handleSubmit}
+      >
+        <IoIosSearch 
+          className="searchBar-icon"
+          color="grey"
+        />
+        <input 
+          type="text" 
+          placeholder={placeholder}
+        ></input>
+      </form>
+    )
+  }
 }
 
-function mapStateToProps ({ activeCategory }) {
-	return {
-		category: activeCategory.category,
-	}
+function mapStateToProps ({ categories }) {
+  return {
+    activeFilter: categories.filter.filtBy,
+  }
 }
 
-export default connect(mapStateToProps)(SearchBar)
+function mapDispatchToProps (dispatch) {
+    return {
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

@@ -104,6 +104,7 @@ function disableByParent (token, post) {
 }
 
 function disable (token, id) {
+    console.log(`comments.disable received parameter: ${id}`)
     return new Promise((res) => {
       let comments = getData(token)
       comments[id].deleted = true
@@ -112,6 +113,7 @@ function disable (token, id) {
 }
 
 function edit (token, id, comment) {
+    let comments = getData(token)
     return new Promise((res) => {
         let comments = getData(token)
         for (prop in comment) {
