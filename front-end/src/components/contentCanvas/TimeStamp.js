@@ -20,7 +20,7 @@ class TimeStamp extends Component {
       return (
         <span>
           <FaUser/>
-          <span>anonymous</span>
+          <span> anonymous </span>
         </span>
       )
     }

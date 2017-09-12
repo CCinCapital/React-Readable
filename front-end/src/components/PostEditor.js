@@ -69,7 +69,7 @@ class PostEditor extends Component {
   }
 
   render () {
-    const className = (this.props.isModalOpen === true) ? this.props.className : "hidden"
+    const className = (this.props.isModalOpen === true) ? "postEditor" : "hidden"
 
     return (
       <div className={className}>

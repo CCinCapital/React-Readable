@@ -8,7 +8,6 @@ import FaListOl from 'react-icons/lib/fa/list-ol'
 import IosClock from 'react-icons/lib/io/ios-clock'
 
 
-
 class PostsSorter extends Component {
 
   // Hidden Menu => visible @ :hover

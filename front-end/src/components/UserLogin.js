@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { loginUser, showUserLogin } from '../actions'
@@ -16,12 +17,10 @@ class UserBar extends Component {
   }
 
   render () {
-    const className = (this.props.isModalOpen === true) ? this.props.className : "hidden"
+    const className = (this.props.isModalOpen === true) ? "userLogin" : "hidden"
 
     return (
-      <div
-          className={className}
-      >
+      <div className={className}>
         <form onSubmit={this.handleLogIn}>
           <span>
             Hi, What would you like to be called?

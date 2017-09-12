@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css'
 
-import { Route } from 'react-router-dom'
-
 import ControlPanel from './ControlPanel'
 import ContentCanvas from './ContentCanvas'
 import UserLogin from './UserLogin'
@@ -15,18 +13,16 @@ class App extends Component {
       
     return (
       <div className="App">
-        <Route path="/" render={({ history }) => (
-          <div>
-            <UserLogin
-                className='userLogin'
-            />
-            <ControlPanel/>
-            <ContentCanvas/>
-            <PostEditor
-                className='postEditor'
-            />
-          </div>
-        )}/> 
+        <div>
+          <UserLogin
+              className='userLogin'
+          />
+          <ControlPanel/>
+          <ContentCanvas/>
+          <PostEditor
+              className='postEditor'
+          />
+        </div>
       </div>
     );
   }

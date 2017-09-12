@@ -14,7 +14,7 @@ class Post extends Component {
       )
     }
     else {
-        const author = (this.props.post.author === null) ? "null" : this.props.post.author 
+        const author = (this.props.post.author === null) ? null : this.props.post.author 
         const date = (new Date(this.props.post.timestamp)).toLocaleString().substr(0, 17) 
 
       return (
