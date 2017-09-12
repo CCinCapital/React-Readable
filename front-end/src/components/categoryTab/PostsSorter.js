@@ -26,7 +26,7 @@ class PostsSorter extends Component {
         />
       )     
     }
-    else if (sortBy === 'vote') {
+    else if (sortBy === 'voteScore') {
       return (
         <FaStar 
           color='grey'
@@ -65,7 +65,7 @@ class PostsSorter extends Component {
         />
       )     
     }
-    else if (sortBy.name === 'vote') {
+    else if (sortBy.name === 'voteScore') {
       return (
         <FaStar 
           color='grey'

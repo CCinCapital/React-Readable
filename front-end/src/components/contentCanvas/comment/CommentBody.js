@@ -8,6 +8,7 @@ class CommentBody extends Component {
   render () {
 
     return (
+      
       <div className={this.props.className}>    
         <span>
           {this.props.comment.body}

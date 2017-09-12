@@ -166,8 +166,8 @@ const initialSorterState = {
       img: 'timestamp.svg',
       title: 'lastest reply',
     },
-    vote: {
-      name: 'vote',
+    voteScore: {
+      name: 'voteScore',
       img: 'vote.svg',
       title: '# of votes',
     },    

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { asyncFetchAllPosts } from '../../actions'
+import { sortByTimestamp, sortByVoteScore } from '../../utils/helper'
 
 import Post from './Post'
 
@@ -13,20 +14,38 @@ class PostsList extends Component {
   }
 
   UI_PostsList () {
+    // return empty div if no posts to render
     if (this.props.posts === null || this.props.posts === undefined) {
       return (
         <div></div>
       )
     } 
-    else if (this.props.posts !== undefined && this.props.activeFilter === 'all') {
+
+    // posts are stored as JSON objects, convert it to array[objects]
+    var posts = Object.keys(this.props.posts)
+                          .map(key => this.props.posts[key]) 
+
+    // sort the array
+    if (this.props.sorter === 'timestamp') {
+      posts = posts.sort(sortByTimestamp)
+    }
+    else if (this.props.sorter === 'voteScore') {
+      posts = posts.sort(sortByVoteScore)
+    }
+    else {
+      // do nothing    
+    }
+
+    // filter the array respecy to category selector
+    // returns the filtered <post/>
+    if (this.props.categoryFilter === 'all') {
       return (
-        Object.entries(this.props.posts)
-          .map((post) => {
-            if (post[1].deleted !== true) {
+        posts.map((post) => {
+            if (post.deleted !== true) {
               return (
                 <Post
-                  key={post[1].id}
-                  post={post[1]}
+                  key={post.id}
+                  post={post}
                 />
               )           
             }
@@ -36,14 +55,13 @@ class PostsList extends Component {
     }
     else {
       return (
-        Object.entries(this.props.posts)
-          .filter((post) => post[1].category === this.props.activeFilter)
+        posts.filter((post) => post.category === this.props.categoryFilter)
           .map((post) => {
-            if (post[1].deleted !== true) {
+            if (post.deleted !== true) {
               return (
                 <Post
-                  key={post[1].id}
-                  post={post[1]}
+                  key={post.id}
+                  post={post}
                 />
               )           
             }
@@ -54,6 +72,7 @@ class PostsList extends Component {
   }
 
   render () {
+
     return (
       <div className="PostsList">
         {this.UI_PostsList()}
@@ -62,10 +81,11 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps ({ posts, categories }) {
+function mapStateToProps ({ posts, categories, sorter }) {
   return {
     posts: posts.posts,
-    activeFilter: categories.filter.filtBy,
+    categoryFilter: categories.filter.filtBy,
+    sorter: sorter.postsSorter.sortBy,
   }
 }
 
