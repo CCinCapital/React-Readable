@@ -339,8 +339,6 @@ function posts (state = initialPostsState, action) {
           }
         }
       }
-
-
     case SHOW_COMMENT_EDITOR:
       return {
         ...state,
@@ -400,7 +398,8 @@ function posts (state = initialPostsState, action) {
               voteScore: action.comment.voteScore,
             }
           }       
-        }
+        },
+        commentEditor: commentEditorInitializer,
       }
     }               
     case HANDLE_EDIT_COMMENT:
