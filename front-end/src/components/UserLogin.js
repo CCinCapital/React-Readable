@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 
-import { loginUser, showUserLogin } from '../actions'
+import { loginUser } from '../actions'
 
 
 class UserBar extends Component {
@@ -13,14 +13,13 @@ class UserBar extends Component {
     this.props.loginUser(
       this.input.value !== '' ? this.input.value : null
     )
-    this.props.showUserLogin(false)
+    this.props.history.push('/')
   }
 
   render () {
-    const className = (this.props.isModalOpen === true) ? "userLogin" : "hidden"
 
     return (
-      <div className={className}>
+      <div className="userLogin">
         <form onSubmit={this.handleLogIn}>
           <span>
             Hi, What would you like to be called?
@@ -49,7 +48,6 @@ function mapStateToProps ({ user }) {
 function mapDispatchToProps (dispatch) {
   return {
     loginUser: (data) => dispatch(loginUser(data)),
-    showUserLogin: (data) => dispatch(showUserLogin(data)),
   }
 }
 

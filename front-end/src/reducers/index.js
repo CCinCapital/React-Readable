@@ -46,21 +46,14 @@ import {
 /******************************************************************/
 const initialUserState = {
   user: null,
-  isModalOpen: true,
 }
 
 function user (state = initialUserState, action) {
   switch (action.type) {
-    case SHOW_USER_LOGIN:
-      return {
-        ...state,
-        isModalOpen: action.isModalOpen,
-      }
     case LOGIN_USER: 
       return {
         ...state,
         user: action.user,
-        isModalOpen: false,
       }
     default: 
       return state

@@ -16,15 +16,7 @@ import * as fetchAPI from '../utils/API'
 /******************************************************************/
 /******************************************************************/
 
-export const SHOW_USER_LOGIN = 'SHOW_USER_LOGIN'
 export const LOGIN_USER = 'LOGIN_USER'
-
-export function showUserLogin (isModalOpen) {
-  return {
-    type: SHOW_USER_LOGIN,
-    isModalOpen,
-  }
-}
 
 export function loginUser (user) {
   return {

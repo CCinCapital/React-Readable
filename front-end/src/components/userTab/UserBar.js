@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
-import { loginUser, showUserLogin } from '../../actions'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+import { loginUser } from '../../actions'
 
 import MdImage from 'react-icons/lib/md/image'
 import MdExit from 'react-icons/lib/md/exit-to-app'
@@ -15,14 +17,13 @@ class UserBar extends Component {
 
   UI_UserBar () {
     if (this.props.user === null) {
-      return (
+      return (      
         <div className="userBar-wraper">
-          <button 
-            className="userBar-loginBtn"
-            onClick={() => (this.props.showUserLogin(true))}
-          >
-            <span>- login -</span>
-          </button>
+          <Link to="/login">
+            <button className="userBar-loginBtn">
+              <span>- login -</span>
+            </button>
+          </Link>
         </div>
       )
     }
@@ -62,7 +63,6 @@ function mapStateToProps ({ user }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    showUserLogin: (data) => dispatch(showUserLogin(data)),
     loginUser: (data) => dispatch(loginUser(data)),
   }
 }
