@@ -33,7 +33,7 @@ class Comments extends Component {
 
     // sort the array
     if (this.props.sorter === 'timestamp') {
-      comments = comments.sort(sortByTimestamp)
+      comments = comments.sort(sortByTimestamp).reverse()
     }
     else if (this.props.sorter === 'voteScore') {
       comments = comments.sort(sortByVoteScore)
