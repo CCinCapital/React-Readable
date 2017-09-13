@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
+
 import { filt, showfilterOptions } from '../../actions'
 
 
@@ -10,14 +12,41 @@ class PostsFilter extends Component {
     this.props.showfilterOptions(isHover)
   }
 
-  render () {
-    const activeFilter = this.props.activeFilter
-    const categoryTitle = this.props.categoriesList[activeFilter].title
-    const categoryImg = this.props.categoriesList[activeFilter].img
+  handleClick (category) { 
+    this.props.filt(category) 
+ 
+    this.props.history.push("/" + category + "/" + this.props.id) 
+  } 
 
+  render () {
+    // get the 'Category' respect to the URL => root/:category/.... 
+    const currentCategory = this.props.history.location.pathname.split("/")[1] 
+     
+    // CategoriesList are stored as JSON objects {{},{},{},..}, convert it to [{},{},{},..] 
+    const categoriesList = Object.keys(this.props.categoriesList) 
+                          .map(key => this.props.categoriesList[key]) 
+ 
+    // find the 'Category' object in CategoriesList 
+    const category = categoriesList.filter(category => category.category === currentCategory)[0] 
+     
+ 
+    // title of the category && image file name of the category 
+    var categoryTitle, categoryImg 
+ 
+    // decide which title/image to use 
+    if (category === null || category === undefined) { 
+      categoryTitle = "all" 
+      categoryImg = "all.svg" 
+    } 
+    else { 
+      categoryTitle = category.title 
+      categoryImg = category.img      
+    } 
+ 
+    // UI 
     return (
       <div 
-        className={this.props.className}
+        className="postsFilter"
         onMouseEnter={() => (this.handleHover(true))}
         onMouseLeave={() => (this.handleHover(false))}
       >
@@ -31,18 +60,18 @@ class PostsFilter extends Component {
           className={(this.props.isOptionVisible === false) ? "hidden" : null}
         >
         {
-          Object.entries(this.props.categoriesList).map((category) => {
+          categoriesList.map((category) => {
             return (
               <li className="postsFilter-category"
-                onClick={() => {this.props.filt(category[1].category)}}
-                key = {category}
+                onClick={() => (this.handleClick(category.category))} 
+                key = {category.title} 
               >
                 <img 
                   className="postsFilter-OptionIcon" 
                   alt="" 
-                  src={require('../../resources/icon/'+category[1].img)}
+                  src={require('../../resources/icon/'+category.img)}
                 ></img>
-                <span>{category[1].title}</span>
+                <span>{category.title}</span>
               </li>
             )
           })
@@ -54,11 +83,12 @@ class PostsFilter extends Component {
 }
 
 
-function mapStateToProps ({ categories }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    categoriesList: categories.categoriesList,
-    activeFilter: categories.filter.filtBy,
-    isOptionVisible: categories.filter.isOptionVisible,
+    categoriesList: rootStore.categories.categoriesList,
+    activeFilter: rootStore.categories.filter.filtBy,
+    isOptionVisible: rootStore.categories.filter.isOptionVisible,
+    id: rootStore.activePost.id,
   }
 }
 

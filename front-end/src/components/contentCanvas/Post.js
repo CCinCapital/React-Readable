@@ -14,8 +14,8 @@ class Post extends Component {
       )
     }
     else {
-        const author = (this.props.post.author === null) ? null : this.props.post.author 
-        const date = (new Date(this.props.post.timestamp)).toLocaleString().substr(0, 17) 
+      const author = (this.props.post.author === null) ? null : this.props.post.author 
+      const date = (new Date(this.props.post.timestamp)).toLocaleString().substr(0, 17) 
 
       return (
         <div className="post-wraper">
@@ -45,9 +45,9 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    post: posts.activePost.post,
+    post: rootStore.activePost.post,
   }
 }
 

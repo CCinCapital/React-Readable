@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { activePost } from '../../actions'
+import { findPost } from '../../actions'
 
 
 class Post extends Component {
+
+  callBack = () => { 
+    const id = this.props.post.id 
+    this.props.callBackFromParent({ 
+      id, 
+    }) 
+    this.props.findPost(id, this.props.post) 
+  } 
 
   URL_selectCategoryImg () {
     if (this.props.post.category === 'react') {
@@ -25,7 +33,7 @@ class Post extends Component {
     
     return (
       <div className="postTab-wraper"
-        onClick={() => (this.props.activePost(this.props.post))}
+        onClick={this.callBack} 
       >
         <img 
           className="postTab-icon" 
@@ -49,9 +57,9 @@ class Post extends Component {
 }
 
 function mapDispatchToProps (dispatch) {
-    return {
-        activePost: (data) => dispatch(activePost(data))
-    }
+  return {
+    findPost: (id, post) => dispatch(findPost(id, post)),
+  }
 }
 
 export default connect(null, mapDispatchToProps)(Post)

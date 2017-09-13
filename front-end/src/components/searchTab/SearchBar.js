@@ -34,9 +34,9 @@ class SearchBar extends Component {
   }
 }
 
-function mapStateToProps ({ categories }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    activeFilter: categories.filter.filtBy,
+    activeFilter: rootStore.categories.filter.filtBy,
   }
 }
 

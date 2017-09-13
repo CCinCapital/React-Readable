@@ -94,12 +94,12 @@ class Comments extends Component {
   }
 }
 
-function mapStateToProps ({ posts, user, sorter }) {
+function mapStateToProps ({ rootStore, user }) {
   return {
-    post: posts.activePost.post,
-    comments: posts.activePost.comments,
+    post: rootStore.activePost.post,
+    comments: rootStore.activePost.comments,
     user: user.user,
-    sorter: sorter.commentsSorter.sortBy,
+    sorter: rootStore.sorter.commentsSorter.sortBy,
   }
 }
 

@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import {
   LOGIN_USER,
   SHOW_USER_LOGIN,
+  CACHE_URL,
 
   FILT,
   SHOW_FILTER_OPTIONS,
@@ -18,6 +19,8 @@ import {
   RECEIVE_POSTS,
   REVISE_POST,
   REMOVE_POST,
+
+  FIND_POST,
 
   ADD_COMMENT,
   RECEIVE_COMMENTS,
@@ -46,7 +49,8 @@ import {
 /******************************************************************/
 const initialUserState = {
   user: null,
-  isModalOpen: true,
+  isModalOpen: false,
+  URLCache: null, 
 }
 
 function user (state = initialUserState, action) {
@@ -62,146 +66,12 @@ function user (state = initialUserState, action) {
         user: action.user,
         isModalOpen: false,
       }
+    case CACHE_URL:
+      return {
+        ...state,
+        URLCache: action.URL,
+      } 
     default: 
-      return state
-  }
-}
-
-
-
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/*****************         CATEGORIES         *********************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-const initialCategoriesState = {
-  categoriesList: {
-    all: {
-      category: 'all',
-      img: 'all.svg',
-      title: 'all topics',
-    },
-    react: {
-      category: 'react',
-      img: 'react.svg',
-      title: 'react',
-    },
-    redux: {
-      category: 'redux',
-      img: 'redux.png',
-      title: 'redux',
-    },
-    udacity: {
-      category: 'udacity',
-      img: 'udacity.svg',
-      title: 'udacity',
-    },    
-  },
-  filter: {
-    isOptionVisible: false,
-    filtBy: 'all',    
-  },
-}
-
-function categories (state = initialCategoriesState, action) {
-  switch (action.type) {
-    case FILT:
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          isOptionVisible: false,
-          filtBy: action.opt,
-        }
-      }
-    case SHOW_FILTER_OPTIONS: 
-      return {
-        ...state,
-        filter: {
-          ...state.filter,
-          isOptionVisible: action.opt,
-        }
-      }
-    default:
-      return state
-  }
-}
-
-
-
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/*****************           SORTER           *********************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-/******************************************************************/
-const initialSorterState = {
-  sortOptions: {
-    default: {
-      name: 'timestamp',
-      img: 'arrange.svg',
-      title: 'sort by : ',
-    },
-    timestamp: {
-      name: 'timestamp',
-      img: 'timestamp.svg',
-      title: 'lastest reply',
-    },
-    voteScore: {
-      name: 'voteScore',
-      img: 'vote.svg',
-      title: '# of votes',
-    },    
-  }, 
-  postsSorter: {
-    isOptionVisible: false,
-    sortBy: 'timestamp',    
-  },
-  commentsSorter: {
-    isOptionVisible: false,
-    sortBy: 'timestamp',    
-  },
-}
-
-function sorter (state = initialSorterState, action) {
-  switch (action.type) {
-    case SORT:
-      return {
-        ...state,
-        [action.sorter]: {
-          ...state[action.sorter],
-          isOptionVisible: false,
-          sortBy: action.opt,
-        }
-      }
-    case SHOW_SORTER_OPTIONS:
-      return {
-        ...state,
-        [action.sorter]: {
-          ...state[action.sorter],
-          isOptionVisible: action.opt,
-        }
-      }
-    default:
       return state
   }
 }
@@ -240,18 +110,138 @@ const commentEditorInitializer = {
   editExistingComment: false,
 }
 
-const initialPostsState = {
+const initialRootStore = {
   posts: {},
   activePost: {
+    id: null,
     post: null,
     comments: null,
   },
   postEditor: postEditorInitializer,
   commentEditor: commentEditorInitializer,
+  sorter: {
+    sortOptions: {
+      default: {
+        name: 'timestamp',
+        img: 'arrange.svg',
+        title: 'sort by : ',
+      },
+      timestamp: {
+        name: 'timestamp',
+        img: 'timestamp.svg',
+        title: 'lastest reply',
+      },
+      voteScore: {
+        name: 'voteScore',
+        img: 'vote.svg',
+        title: '# of votes',
+      },    
+    }, 
+    postsSorter: {
+      isOptionVisible: false,
+      sortBy: 'timestamp',    
+    },
+    commentsSorter: {
+      isOptionVisible: false,
+      sortBy: 'timestamp',    
+    },
+  },
+  categories: {
+    categoriesList: {
+      all: {
+        category: 'all',
+        img: 'all.svg',
+        title: 'all topics',
+      },
+      react: {
+        category: 'react',
+        img: 'react.svg',
+        title: 'react',
+      },
+      redux: {
+        category: 'redux',
+        img: 'redux.png',
+        title: 'redux',
+      },
+      udacity: {
+        category: 'udacity',
+        img: 'udacity.svg',
+        title: 'udacity',
+      },    
+    },
+    filter: {
+      isOptionVisible: false,
+      filtBy: 'all',    
+    },
+  }
 }
 
-function posts (state = initialPostsState, action) {
+function rootStore (state = initialRootStore, action) {
   switch (action.type) {
+
+    case FILT:
+      return {
+        ...state,
+        categories: {
+          ...state.categories,
+          filter: {
+            ...state.categories.filter,
+            isOptionVisible: false,
+            filtBy: action.opt,
+          }          
+        } 
+      }
+    case SHOW_FILTER_OPTIONS: 
+      return {
+        ...state,
+        categories: {
+          ...state.categories,
+          filter: {
+            ...state.categories.filter,
+            isOptionVisible: action.opt,
+          }          
+        } 
+      }    
+    //**************************************************
+    //*************   SORTER  **************************
+    //**************************************************
+    case SORT:
+      return {
+        ...state,
+        sorter: {
+          ...state.sorter,
+          [action.sorter]: {
+            ...state.sorter[action.sorter],
+            isOptionVisible: false,
+            sortBy: action.opt,
+          }                 
+        } 
+      }
+    case SHOW_SORTER_OPTIONS:
+    console.log(state.sorter[action.sorter])
+      return {
+        ...state,
+        sorter: {
+          ...state.sorter,
+          [action.sorter]: {
+            ...state.sorter[action.sorter],
+            isOptionVisible: action.opt,
+          }                 
+        } 
+      }  
+    //**************************************************
+    //*************   POSTS  **************************
+    //**************************************************  
+    case FIND_POST: {
+      return {
+        ...state,
+        activePost: {
+          ...state.activePost,
+          id: action.id,
+          post: action.post,
+        }
+      }
+    }
     case RECEIVE_POSTS: 
       return {
         ...state,
@@ -339,6 +329,10 @@ function posts (state = initialPostsState, action) {
           }
         }
       }
+
+    //**************************************************
+    //*************  COMMENTS **************************
+    //**************************************************  
     case SHOW_COMMENT_EDITOR:
       return {
         ...state,
@@ -420,8 +414,6 @@ function posts (state = initialPostsState, action) {
 
 
 export default combineReducers({
-  categories,
-  sorter,
-  posts,
+  rootStore,
   user,
 }) 

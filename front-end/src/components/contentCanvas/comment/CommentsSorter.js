@@ -115,11 +115,11 @@ class commentsSorter extends Component {
 }
 
 
-function mapStateToProps ({ sorter }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    sortBy: sorter.commentsSorter.sortBy,
-    sortOptions: sorter.sortOptions,
-    isOptionVisible: sorter.commentsSorter.isOptionVisible,
+    sortBy: rootStore.sorter.commentsSorter.sortBy,
+    sortOptions: rootStore.sorter.sortOptions,
+    isOptionVisible: rootStore.sorter.commentsSorter.isOptionVisible,
   }
 }
 

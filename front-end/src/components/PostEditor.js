@@ -136,14 +136,14 @@ class PostEditor extends Component {
   }
 }
 
-function mapStateToProps ({ user, categories, posts }) {
+function mapStateToProps ({ user, rootStore }) {
   return {
-    isModalOpen: posts.postEditor.isModalOpen,
-    post: posts.postEditor.postToEdit, 
-    buffer: posts.postEditor.buffer,
+    isModalOpen: rootStore.postEditor.isModalOpen,
+    post: rootStore.postEditor.postToEdit, 
+    buffer: rootStore.postEditor.buffer,
     user: user.user,
-    categoriesList: categories.categoriesList,
-    isNewPost: posts.postEditor.isNewPost,
+    categoriesList: rootStore.categories.categoriesList,
+    isNewPost: rootStore.postEditor.isNewPost,
   }
 }
 

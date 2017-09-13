@@ -10,45 +10,58 @@ import FaEdit from 'react-icons/lib/fa/edit'
 
 class postController extends Component {
 
+  UI_Controller () {
+    if (this.props.post === null || this.props.post === undefined) {
+      return (
+        <div></div>
+      )
+    }
+    else {
+      return (
+        <ul className="postController">
+          <MdMenu
+            size={30}
+            className="postController-icon"
+            color="grey"
+          />
+          <li>
+            <span
+              onClick={() => (this.props.showPostEditor(this.props.post, true))}
+            >
+              <FaEdit
+                size={35}
+                className="postController-icon"
+                color="grey"
+              />
+              edit
+            </span>
+            <span
+              onClick={() => (this.props.asyncDeletePost(this.props.post))}
+            >
+              <FaTrashO
+                size={35}
+                className="postController-icon"
+                color="grey"
+              />
+              delete
+            </span>         
+          </li>
+        </ul>
+      )
+    }
+  }
+
   render () {
 
     return (
-      <ul className="postController">
-        <MdMenu
-          size={30}
-          className="postController-icon"
-          color="grey"
-        />
-        <li>
-          <span
-            onClick={() => (this.props.showPostEditor(this.props.post, true))}
-          >
-            <FaEdit
-              size={35}
-              className="postController-icon"
-              color="grey"
-            />
-            edit
-          </span>
-          <span
-            onClick={() => (this.props.asyncDeletePost(this.props.post))}
-          >
-            <FaTrashO
-              size={35}
-              className="postController-icon"
-              color="grey"
-            />
-            delete
-          </span>         
-        </li>
-      </ul>
+      this.UI_Controller()
     )
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    post: posts.activePost.post,
+    post: rootStore.activePost.post,
   }
 }
 

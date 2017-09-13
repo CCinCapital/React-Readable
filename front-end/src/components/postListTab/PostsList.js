@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 
-import { asyncFetchAllPosts } from '../../actions'
 import { sortByTimestamp, sortByVoteScore } from '../../utils/helper'
 
 import Post from './Post'
@@ -9,9 +9,11 @@ import Post from './Post'
 
 class PostsList extends Component {
 
-  componentDidMount() {
-      this.props.asyncFetchAllPosts()
-  }
+  callBack = (childrenData) => { 
+    const category = this.props.history.location.pathname.split("/")[1] 
+ 
+    this.props.history.push(`/${category}/${childrenData.id}`) 
+  } 
 
   UI_PostsList () {
     // return empty div if no posts to render
@@ -23,7 +25,8 @@ class PostsList extends Component {
 
     // posts are stored as JSON objects, convert it to array[objects]
     var posts = Object.keys(this.props.posts)
-                          .map(key => this.props.posts[key]) 
+                      .map(key => this.props.posts[key]) 
+                      .filter(post => post.deleted === false) 
 
     // sort the array
     if (this.props.sorter === 'timestamp') {
@@ -41,32 +44,28 @@ class PostsList extends Component {
     if (this.props.categoryFilter === 'all') {
       return (
         posts.map((post) => {
-            if (post.deleted !== true) {
-              return (
-                <Post
-                  key={post.id}
-                  post={post}
-                />
-              )           
-            }
-            return null
-          })
+          return (
+            <Post
+              key={post.id}
+              post={post}
+              callBackFromParent={this.callBack} 
+            />
+          )           
+        })
       )
     }
     else {
       return (
         posts.filter((post) => post.category === this.props.categoryFilter)
-          .map((post) => {
-            if (post.deleted !== true) {
+            .map((post) => {
               return (
                 <Post
                   key={post.id}
                   post={post}
+                  callBackFromParent={this.callBack} 
                 />
               )           
-            }
-            return null
-          })
+            })
       )
     }
   }
@@ -81,18 +80,12 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps ({ posts, categories, sorter }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    posts: posts.posts,
-    categoryFilter: categories.filter.filtBy,
-    sorter: sorter.postsSorter.sortBy,
+    posts: rootStore.posts,
+    categoryFilter: rootStore.categories.filter.filtBy,
+    sorter: rootStore.sorter.postsSorter.sortBy,
   }
 }
 
-function mapDispatchToProps (dispatch) {
-    return {
-        asyncFetchAllPosts: () => dispatch(asyncFetchAllPosts()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostsList)
+export default connect(mapStateToProps)(PostsList)

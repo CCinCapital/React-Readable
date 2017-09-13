@@ -35,9 +35,9 @@ class ChatArea extends Component {
   }
 }
 
-function mapStateToProps ({ posts, user }) {
+function mapStateToProps ({ rootStore, user }) {
   return {
-    post: posts.activePost.post,
+    post: rootStore.activePost.post,
   }
 }
 

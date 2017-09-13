@@ -114,11 +114,11 @@ class PostsSorter extends Component {
 }
 
 
-function mapStateToProps ({ sorter }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    sortBy: sorter.postsSorter.sortBy,
-    sortOptions: sorter.sortOptions,
-    isOptionVisible: sorter.postsSorter.isOptionVisible,
+    sortBy: rootStore.sorter.postsSorter.sortBy,
+    sortOptions: rootStore.sorter.sortOptions,
+    isOptionVisible: rootStore.sorter.postsSorter.isOptionVisible,
   }
 }
 
