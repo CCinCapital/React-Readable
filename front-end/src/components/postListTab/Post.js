@@ -8,7 +8,9 @@ class Post extends Component {
 
   callBack = () => { 
     const id = this.props.post.id 
+    const category = this.props.post.category
     this.props.callBackFromParent({ 
+      category,
       id, 
     }) 
     this.props.findPost(id, this.props.post) 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 
 import IoIosSearch from 'react-icons/lib/io/ios-search'

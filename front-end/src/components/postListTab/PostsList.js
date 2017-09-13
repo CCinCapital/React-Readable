@@ -10,10 +10,14 @@ import Post from './Post'
 class PostsList extends Component {
 
   callBack = (childrenData) => { 
-    const category = this.props.history.location.pathname.split("/")[1] 
- 
-    this.props.history.push(`/${category}/${childrenData.id}`) 
+    //const category = this.props.history.location.pathname.split("/")[1] 
+    //const cat = (category === undefined) ? childrenData.category : category
+    this.props.history.push(`/${childrenData.category}/${childrenData.id}`) 
   } 
+
+  shoudlComponentUpdate (nextProps) {
+    return this.props.categoryFilter !== nextProps.categoryFilter
+  }
 
   UI_PostsList () {
     // return empty div if no posts to render

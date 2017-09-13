@@ -218,7 +218,6 @@ function rootStore (state = initialRootStore, action) {
         } 
       }
     case SHOW_SORTER_OPTIONS:
-    console.log(state.sorter[action.sorter])
       return {
         ...state,
         sorter: {

@@ -9,6 +9,13 @@ html, body {
   visibility: hidden;
 }
 
+.error {
+  position: relative;
+  display: block;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 /******************************************************************/
 /******************************************************************/
@@ -529,6 +536,7 @@ html, body {
   left: 0;
   position: absolute;
   padding: 0px 0px 0px 0px;
+  overflow: auto;
 }
 
 .postsList:hover {

@@ -19,8 +19,28 @@ class ContentCanvas extends Component {
     return this.props.posts === null || this.props.post.id !== nextProps.post.id
   }
 
+  UI_ERROR () {
+    return (
+      <div className="contentCanvas">
+        <img 
+          className="error" 
+          alt="" 
+          src={require('../resources/icon/404.svg')}
+        ></img>
+      </div>
+    )
+  }
+
   UI_showCanvas () {
  
+    const URL = this.props.history.location.pathname
+
+    if (URL === '/') {
+      return (
+        <div className="contentCanvas"></div>
+      )
+    }
+
     if (this.props.posts === null || this.props.posts === undefined) {
       return (
         <div className="contentCanvas"></div>
@@ -33,13 +53,13 @@ class ContentCanvas extends Component {
 
     if (this.p === undefined) {
       return (
-        <div className="contentCanvas"></div>
+        this.UI_ERROR()
       )
     }
 
     if (this.p.deleted === true) {
       return (
-        <div className="contentCanvas"></div>
+        this.UI_ERROR()
       )
     }
 
