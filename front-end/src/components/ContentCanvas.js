@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { activePost } from '../actions'
+
 import PostTitleBar from './contentCanvas/PostTitleBar'
 import PostController from './contentCanvas/PostController'
 import ChatArea from './contentCanvas/ChatArea'
@@ -9,11 +11,55 @@ import CommentEditor from './contentCanvas/comment/CommentEditor'
 
 class ContentCanvas extends Component {
 
-  UI_showCanvas () {
+  shouldComponentUpdate (nextProps) {
+    if (this.props.post.post === null) {
+      this.props.activePost(this.p)      
+    }
 
-    if (this.props.post === null || this.props.post === undefined) {
+    return this.props.posts === null || this.props.post.id !== nextProps.post.id
+  }
+
+  UI_ERROR () {
+    return (
+      <div className="contentCanvas">
+        <img 
+          className="error" 
+          alt="" 
+          src={require('../resources/icon/404.svg')}
+        ></img>
+      </div>
+    )
+  }
+
+  UI_showCanvas () {
+ 
+    const URL = this.props.history.location.pathname
+
+    if (URL === '/') {
       return (
         <div className="contentCanvas"></div>
+      )
+    }
+
+    if (this.props.posts === null || this.props.posts === undefined) {
+      return (
+        <div className="contentCanvas"></div>
+      )
+    }
+
+    const posts = Object.keys(this.props.posts)
+                        .map(key => this.props.posts[key]) 
+    this.p = posts.filter(post => post.id === this.props.id)[0]
+
+    if (this.p === undefined) {
+      return (
+        this.UI_ERROR()
+      )
+    }
+
+    if (this.p.deleted === true) {
+      return (
+        this.UI_ERROR()
       )
     }
 
@@ -35,10 +81,18 @@ class ContentCanvas extends Component {
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    post: posts.activePost.post,
+    id: rootStore.activePost.id,
+    post: rootStore.activePost,
+    posts: rootStore.posts,
   }
 }
 
-export default connect(mapStateToProps)(ContentCanvas)
+function mapDispatchToProps (dispatch) {
+  return {
+    activePost: (data) => dispatch(activePost(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentCanvas)

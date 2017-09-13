@@ -40,9 +40,9 @@ class PostVoter extends Component {
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    post: posts.activePost.post,
+    post: rootStore.activePost.post,
   }
 }
 

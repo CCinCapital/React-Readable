@@ -89,13 +89,13 @@ class CommentEditor extends Component {
   }
 }
 
-function mapStateToProps ({ user, posts }) {
+function mapStateToProps ({ user, rootStore }) {
   return {
     user: user.user,
-    post: posts.activePost.post,
-    comment: posts.commentEditor.commentToEdit,
-    buffer: posts.commentEditor.buffer,
-    editExistingComment: posts.commentEditor.editExistingComment,
+    post: rootStore.activePost.post,
+    comment: rootStore.commentEditor.commentToEdit,
+    buffer: rootStore.commentEditor.buffer,
+    editExistingComment: rootStore.commentEditor.editExistingComment,
   }
 }
 

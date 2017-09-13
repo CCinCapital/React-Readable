@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 
 import FaUser from 'react-icons/lib/fa/user'

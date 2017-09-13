@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Route } from 'react-router-dom'
+
 import UserBar from './userTab/UserBar'
 import SearchTab from './searchTab/SearchTab'
 import CategoryTab from './categoryTab/CategoryTab'
@@ -15,7 +17,7 @@ class ControlPanel extends Component {
         <UserBar/>
         <CategoryTab/>
         <SearchTab/>
-        <PostsList/>
+        <Route path="/" component={PostsList}/>
       </div>
     )
   }

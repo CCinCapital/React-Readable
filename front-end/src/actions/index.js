@@ -18,6 +18,7 @@ import * as fetchAPI from '../utils/API'
 
 export const SHOW_USER_LOGIN = 'SHOW_USER_LOGIN'
 export const LOGIN_USER = 'LOGIN_USER'
+export const CACHE_URL = 'CACHE_URL'
 
 export function showUserLogin (isModalOpen) {
   return {
@@ -33,7 +34,12 @@ export function loginUser (user) {
   }
 }
 
-
+export function cacheURL (URL) {
+  return {
+    type: CACHE_URL,
+    URL,
+  }
+}
 
 // Sorter
 export const SORT = 'SORT'
@@ -98,6 +104,7 @@ export const REVISE_POST = 'REVISE_POST'
 export const ACTIVE_POST = 'ACTIVE_POST'
 export const HANDLE_EDIT_POST ='HANDLE_EDIT_POST'
 export const REMOVE_POST = 'REMOVE_POST'
+export const FIND_POST = 'FIND_POST'
 
 
 export function showPostEditor (post, isOpen, isNew) {
@@ -188,6 +195,14 @@ export function removePost (id) {
   return {
     type: REMOVE_POST,
     id,
+  }
+}
+
+export function findPost (id, post) {
+  return {
+    type: FIND_POST,
+    id,
+    post,
   }
 }
 

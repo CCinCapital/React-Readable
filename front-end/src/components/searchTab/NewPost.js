@@ -20,9 +20,9 @@ class NewPost extends Component {
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ rootStore }) {
   return {
-    isModalOpen: posts.postEditor.isModalOpen,
+    isModalOpen: rootStore.postEditor.isModalOpen,
   }
 }
 
