@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { loginUser, showUserLogin } from '../actions'
+import { loginUser, showUserLogin } from '../actions/user'
 
 
 class UserBar extends Component {

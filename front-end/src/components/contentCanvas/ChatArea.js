@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { asyncFetchCommentsUnderPost } from '../../actions'
+import { asyncFetchCommentsUnderPost } from '../../actions/comments'
 
 import Post from './Post'
 import Comments from './Comments'

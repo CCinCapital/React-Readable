@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { showPostEditor } from '../../actions'
+import { showPostEditor } from '../../actions/posts'
 
 import TiEdit from 'react-icons/lib/ti/edit'
 

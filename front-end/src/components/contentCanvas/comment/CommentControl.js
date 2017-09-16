@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { showCommentEditor, AsyncDeleteComment } from '../../../actions'
+import { showCommentEditor, AsyncDeleteComment } from '../../../actions/comments'
 
 import FaEdit from 'react-icons/lib/fa/edit'
 import FaTrashO from 'react-icons/lib/fa/trash-o'

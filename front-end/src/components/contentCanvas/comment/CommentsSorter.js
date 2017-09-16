@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { sort, showSorterOptions } from '../../../actions'
+import { sort, showSorterOptions } from '../../../actions/sorter'
 
 import FaStar from 'react-icons/lib/fa/star'
 import FaListOl from 'react-icons/lib/fa/list-ol'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { activePost } from '../actions'
+import { activePost } from '../actions/posts'
 
 import PostTitleBar from './contentCanvas/PostTitleBar'
 import PostController from './contentCanvas/PostController'
@@ -19,14 +19,20 @@ class ContentCanvas extends Component {
     return this.props.posts === null || this.props.post.id !== nextProps.post.id
   }
 
+  callBack = (childrenData) => { 
+    this.props.history.push(`/${childrenData.category}/`) 
+  }   
+
   UI_ERROR () {
     return (
       <div className="contentCanvas">
-        <img 
-          className="error" 
-          alt="" 
-          src={require('../resources/icon/404.svg')}
-        ></img>
+        <div className="error">
+          <img
+            alt="" 
+            src={require('../resources/icon/404.svg')}
+          ></img>
+          <p>Post Not Available</p>
+        </div>
       </div>
     )
   }
@@ -66,7 +72,9 @@ class ContentCanvas extends Component {
     return (
       <div className="contentCanvas">
         <PostTitleBar/>
-        <PostController/>
+        <PostController
+          callBackFromParent={this.callBack} 
+        />
         <ChatArea/>
         <CommentEditor/>
       </div>
