@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { asyncVotePost } from '../../actions'
+import { asyncVotePost } from '../../actions/posts'
 
 import FaStar from 'react-icons/lib/fa/star'
 import FaStarO from 'react-icons/lib/fa/star-o'

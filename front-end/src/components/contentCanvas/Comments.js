@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { asyncFetchCommentsUnderPost } from '../../actions'
+import { asyncFetchCommentsUnderPost } from '../../actions/comments'
 import { sortByTimestamp, sortByVoteScore } from '../../utils/helper'
 
 import CommentsSorter from './comment/CommentsSorter'

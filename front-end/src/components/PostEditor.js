@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { showPostEditor, handleEditPost, asyncSubmitPost, asyncUpdatePost } from '../actions'
+import { showPostEditor, handleEditPost, asyncSubmitPost, asyncUpdatePost } from '../actions/posts'
 import { uuid } from '../utils/helper'
 
 import FaTrashO from 'react-icons/lib/fa/trash-o'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CommentEditorActionBar from './CommentEditorActionBar'
-import { handleEditComment, asyncPostComment, asyncUpdateComment } from '../../../actions'
+import { handleEditComment, asyncPostComment, asyncUpdateComment } from '../../../actions/comments'
 import { uuid } from '../../../utils/helper'
 
 class CommentEditor extends Component {

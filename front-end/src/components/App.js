@@ -4,7 +4,9 @@ import '../styles/App.css'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
-import { asyncFetchAllPosts, filt, findPost, cacheURL } from '../actions'
+import { asyncFetchAllPosts, findPost } from '../actions/posts'
+import { filt } from '../actions/filter'
+import { cacheURL } from '../actions'
 
 import ControlPanel from './ControlPanel'
 import ContentCanvas from './ContentCanvas'

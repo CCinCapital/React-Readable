@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { activePost } from '../actions'
+import { activePost } from '../actions/posts'
 
 import PostTitleBar from './contentCanvas/PostTitleBar'
 import PostController from './contentCanvas/PostController'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { findPost } from '../../actions'
+import { findPost } from '../../actions/posts'
 
 
 class Post extends Component {

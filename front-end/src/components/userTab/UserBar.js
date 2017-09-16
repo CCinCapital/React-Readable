@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { loginUser, showUserLogin } from '../../actions'
+import { loginUser, showUserLogin } from '../../actions/user'
 
 import MdImage from 'react-icons/lib/md/image'
 import MdExit from 'react-icons/lib/md/exit-to-app'

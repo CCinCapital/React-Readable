@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { showPostEditor, asyncDeletePost } from '../../actions'
+import { showPostEditor, asyncDeletePost } from '../../actions/posts'
 
 import MdMenu from 'react-icons/lib/md/menu'
 import FaTrashO from 'react-icons/lib/fa/trash-o'
