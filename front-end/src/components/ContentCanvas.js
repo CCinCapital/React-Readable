@@ -19,6 +19,10 @@ class ContentCanvas extends Component {
     return this.props.posts === null || this.props.post.id !== nextProps.post.id
   }
 
+  callBack = (childrenData) => { 
+    this.props.history.push(`/${childrenData.category}`) 
+  }   
+
   UI_ERROR () {
     return (
       <div className="contentCanvas">
