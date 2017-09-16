@@ -10,6 +10,17 @@ import FaEdit from 'react-icons/lib/fa/edit'
 
 class postController extends Component {
 
+  callBack = () => { 
+    const id = this.props.post.id 
+    const category = this.props.post.category
+    this.props.callBackFromParent({ 
+      category,
+      id, 
+    }) 
+    this.props.asyncDeletePost(this.props.post)
+  } 
+
+
   UI_Controller () {
     if (this.props.post === null || this.props.post === undefined) {
       return (
@@ -36,7 +47,7 @@ class postController extends Component {
               edit
             </span>
             <span
-              onClick={() => (this.props.asyncDeletePost(this.props.post))}
+              onClick={this.callBack}
             >
               <FaTrashO
                 size={35}

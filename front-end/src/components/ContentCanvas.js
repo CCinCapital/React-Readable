@@ -20,17 +20,19 @@ class ContentCanvas extends Component {
   }
 
   callBack = (childrenData) => { 
-    this.props.history.push(`/${childrenData.category}`) 
+    this.props.history.push(`/${childrenData.category}/`) 
   }   
 
   UI_ERROR () {
     return (
       <div className="contentCanvas">
-        <img 
-          className="error" 
-          alt="" 
-          src={require('../resources/icon/404.svg')}
-        ></img>
+        <div className="error">
+          <img
+            alt="" 
+            src={require('../resources/icon/404.svg')}
+          ></img>
+          <p>Post Not Available</p>
+        </div>
       </div>
     )
   }
@@ -70,7 +72,9 @@ class ContentCanvas extends Component {
     return (
       <div className="contentCanvas">
         <PostTitleBar/>
-        <PostController/>
+        <PostController
+          callBackFromParent={this.callBack} 
+        />
         <ChatArea/>
         <CommentEditor/>
       </div>

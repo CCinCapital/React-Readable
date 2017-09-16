@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+
 import MdTagFaces from 'react-icons/lib/md/tag-faces'
 import TiImage from 'react-icons/lib/ti/image'
+
 
 class CommentEditorActionBar extends Component {
 
@@ -9,6 +12,7 @@ class CommentEditorActionBar extends Component {
     
     return (
       <div className="commentEditor-actionBar">
+        <p className={this.props.editExistingComment === false ? "hidden" : "commentEditor-editing-msg"}>Editing comment:</p>
         <MdTagFaces
           size={20}
           color="grey"
@@ -22,4 +26,10 @@ class CommentEditorActionBar extends Component {
   }
 }
 
-export default CommentEditorActionBar
+function mapStateToProps ({ rootStore }) {
+  return {
+    editExistingComment: rootStore.commentEditor.editExistingComment,
+  }
+}
+
+export default connect(mapStateToProps)(CommentEditorActionBar)

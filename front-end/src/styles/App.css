@@ -10,11 +10,18 @@ html, body {
 }
 
 .error {
+  text-align: center;
   position: relative;
   display: block;
   margin: auto;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.error p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #AAAAAA;
 }
 
 /******************************************************************/
@@ -860,6 +867,17 @@ html, body {
   padding: 5px 17px;
   position: relative;
   display: block;
+}
+
+.commentEditor-editing-msg {
+  position: absolute;
+  left: 0;
+  top: -16px;
+  width: 100%;
+  background-color: #348596;
+  padding: 4px 20px;
+  text-align: left;
+  color: #FFFFFF;
 }
 
 /* Reply input starts */
