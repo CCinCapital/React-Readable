@@ -3,6 +3,9 @@
 This is a content and comment web app works with [Readable API Server](https://github.com/udacity/reactnd-project-readable-starter).
 - The App is built with React, Redux, and React-Router.
 
+## Live Preview
+_Live preview not yet availiable, please consider install&run on your own station._
+
 ## About
 
 Users will post content to the predefined categories, comment, and vote :+1:. Users are able to edit or delete existing posts/comments. If the post is deleted, it is no long accessible at its URL.
